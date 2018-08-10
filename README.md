@@ -8,13 +8,13 @@ Cara Memasang
 Melalui console:
 
 ```
-composer require --prefer-dist diecoding/yii2-toastr "*"
+composer require --prefer-dist diecoding/yii2-toastr "dev-master"
 ```
 
 atau tambahkan:
 
 ```
-"diecoding/yii2-toastr": "*"
+"diecoding/yii2-toastr": "dev-master"
 ```
 
 pada baris `require` yang terdapat di berkas `composer.json`. Kemudian jalankan
