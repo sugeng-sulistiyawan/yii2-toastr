@@ -13,7 +13,7 @@ use yii\helpers\Json;
 /**
  *
  */
-class ToastrFlash extends NotificationBase
+class ToastrFlash extends ToastrBase
 {
     /**
      *

@@ -9,6 +9,9 @@ namespace diecoding\toastr;
 
 use yii\web\AssetBundle;
 
+/**
+ *
+ */
 class ToastrAsset extends AssetBundle
 {
     /**
