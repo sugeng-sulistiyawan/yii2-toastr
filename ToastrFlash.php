@@ -35,7 +35,7 @@ class ToastrFlash extends ToastrBase
             $data = (array) $data;
 
             foreach ($data as $i => $message) {
-                Notification::widget(
+                Toastr::widget(
                     [
                         'type'    => Html::encode($type),
                         'message' => Html::encode($message),
