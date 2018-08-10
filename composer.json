@@ -1,0 +1,39 @@
+{
+  "name": "diecoding/yii2-toastr",
+  "description": "Simple flash toastr notifications for Yii2",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "extension",
+    "session",
+    "flash",
+    "toastr",
+    "notification",
+    "jquery"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/diecoding/yii2-widget-toastr/issues",
+    "source": "https://github.com/diecoding/yii2-widget-toastr"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "yiisoft/yii2": "~2.0.0",
+    "bower-asset/toastr": "~2.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "diecoding\\toastr\\": ""
+    }
+  },
+  "authors": [
+    {
+      "name": "Die Coding",
+      "email": "diecoding@gmail.com"
+    }, {
+      "name": "Sugeng Sulistiyawan",
+      "email": "sugeng.sulistiyawan@student.uns.ac.id"
+    }
+  ]
+}
