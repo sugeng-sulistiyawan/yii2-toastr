@@ -18,33 +18,31 @@ class ToastrFlash extends ToastrBase
     /**
      *
      *
-     * @var object $session
+     * @var object $_session
      */
-    private $session;
+    private $_session;
 
     /**
      * @inheritdoc
      */
     public function run()
     {
-        $this->session = \Yii::$app->session;
-
-        $flashes = $this->session->getAllFlashes();
-
+        $this->_session = \Yii::$app->session;
+        $flashes        = $this->_session->getAllFlashes();
         foreach ($flashes as $type => $data) {
-            $data = (array) $data;
+            $datas = (array) $data;
 
-            foreach ($data as $i => $message) {
+            foreach ($datas as $message) {
                 Toastr::widget(
                     [
                         'type'    => Html::encode($type),
                         'message' => Html::encode($message),
-                        'options' => Json::decode((string) $this->options),
+                        'options' => Json::decode($this->options),
                     ]
                 );
             }
 
-            $this->session->removeFlash($type);
+            $this->_session->removeFlash($type);
         }
     }
 }

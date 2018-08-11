@@ -42,20 +42,6 @@ class ToastrBase extends Widget
     /**
      *
      *
-     * @var array $types
-     */
-    public $types = ['info', 'error', 'success', 'warning'];
-
-    /**
-     *
-     *
-     * @var string $typeDefault
-     */
-    public $typeDefault = self::TYPE_INFO;
-
-    /**
-     *
-     *
      * @var array $options
      */
     public $options = [];
@@ -90,12 +76,7 @@ class ToastrBase extends Widget
 
         $this->view->registerAssetBundle(ToastrAsset::className());
 
-        $this->title = is_string($this->title) ? Html::encode($this->title) : null;
-
-        $this->message = $this->message ? : Yii::t('diecoding', 'This is the message');
-        $this->message = Html::encode($this->message);
-
-        $this->options = is_array($this->options) ?
-            Json::encode($this->options) : Json::encode([]);
+        $this->type    = $this->type ? : self::TYPE_INFO;
+        $this->options = Json::encode($this->options);
     }
 }
