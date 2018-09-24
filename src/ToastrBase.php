@@ -6,7 +6,7 @@
  */
 
 
-namespace diecoding\toastr\src;
+namespace diecoding\toastr;
 
 use Yii;
 use yii\base\Widget;
