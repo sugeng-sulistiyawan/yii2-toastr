@@ -6,7 +6,7 @@
  */
 
 
-namespace diecoding\toastr;
+namespace diecoding\toastr\src;
 
 use Yii;
 use yii\base\Widget;
@@ -82,16 +82,8 @@ class ToastrBase extends Widget
      */
     public function init()
     {
-        if (!isset(Yii::$app->i18n->translations['diecoding'])) {
-            Yii::$app->i18n->translations['diecoding'] = [
-                'class'          => 'yii\i18n\PhpMessageSource',
-                'sourceLanguage' => 'en',
-                'basePath'       => __DIR__ . '/i18n',
-            ];
-        }
-
-        $this->view->registerAssetBundle(ToastrAsset::className());
-
+        $this->view->registerAssetBundle(ToastrAsset::className());		
+		
         $this->type    = $this->type ? : self::TYPE_INFO;
         $this->options = Json::encode($this->options);
     }

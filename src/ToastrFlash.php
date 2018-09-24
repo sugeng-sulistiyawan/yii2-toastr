@@ -5,7 +5,7 @@
  * @copyright Copyright (c) 2018
  */
 
-namespace diecoding\toastr;
+namespace diecoding\toastr\src;
 
 use yii\helpers\Html;
 use yii\helpers\Json;
