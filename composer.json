@@ -19,8 +19,8 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "yiisoft/yii2": "~2.0.0",
-    "bower-asset/toastr": "~2.1.0"
+    "yiisoft/yii2": "^2.0.0",
+    "bower-asset/toastr": "^2.1.0"
   },
   "autoload": {
     "psr-4": {
