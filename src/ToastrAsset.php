@@ -5,7 +5,7 @@
  * @copyright Copyright (c) 2018
  */
 
-namespace diecoding\toastr\src;
+namespace diecoding\toastr;
 
 use yii\web\AssetBundle;
 
