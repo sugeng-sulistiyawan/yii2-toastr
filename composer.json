@@ -1,10 +1,10 @@
 {
   "name": "diecoding/yii2-toastr",
   "description": "Simple flash toastr notifications for Yii2",
-  "type": "yii2-widgets",
+  "type": "yii2-widget",
   "keywords": [
     "yii2",
-    "widgets",
+    "widget",
     "session",
     "flash",
     "toastr",
@@ -13,8 +13,8 @@
   ],
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/diecoding/yii2-widget-toastr/issues",
-    "source": "https://github.com/diecoding/yii2-widget-toastr"
+    "issues": "https://github.com/diecoding/yii2-toastr/issues",
+    "source": "https://github.com/diecoding/yii2-toastr"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
