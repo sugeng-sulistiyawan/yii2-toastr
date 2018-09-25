@@ -36,10 +36,15 @@ composer update
 
 ```php
 \Yii::$app->session->setFlash('error', 'Message');
+
+\Yii::$app->session->setFlash('error', ['Message 1', 'Message 2', 'Message 3']);
 ```
 
   * Cara Advanced
 
 ```php
-\Yii::$app->session->setFlash('error', ['title' => 'Title', 'message' => 'Message']);
+\Yii::$app->session->setFlash('error', [['Title', 'Message']]);
+
+
+\Yii::$app->session->setFlash('error', [['Title 1', 'Message 1'], ['Title 2', 'Message 2'], ['Title 3', 'Message 3']]);
 ```

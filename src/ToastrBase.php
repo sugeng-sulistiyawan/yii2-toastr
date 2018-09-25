@@ -116,13 +116,14 @@ class ToastrBase extends Widget
 
     /**
      *
+     * @var array $options
      */
-    private $_options;
+    public $options;
 
     /**
      *
      */
-    private $_alertTypes = ["info", "error", "success", "warning"];
+    const ALERT_TYPES = ["info", "error", "success", "warning"];
 
     const POSITION_TOP_RIGHT      = "toast-top-right";
     const POSITION_TOP_LEFT       = "toast-top-left";
@@ -141,7 +142,7 @@ class ToastrBase extends Widget
     {
         parent::init();
         $this->view->registerAssetBundle(ToastrAsset::className());
-        $this->_options = [
+        $options = [
             "closeButton"       => $this->closeButton,
             "debug"             => $this->debug,
             "newestOnTop"       => $this->newestOnTop,
@@ -160,6 +161,7 @@ class ToastrBase extends Widget
             "tapToDismiss"      => $this->tapToDismiss,
         ];
 
-        $this->_options = Json::encode($this->_options);
+        $options       = ($this->options || !empty($this->options)) ? $this->options : $options;
+        $this->options = Json::encode($options);
     }
 }

@@ -35,7 +35,7 @@ class Toastr extends ToastrBase
      */
     public function run()
     {
-        $js = "toastr.{$this->type}(\"{$this->message}\", \"{$this->title}\", {$this->_options});";
+        $js = "toastr.{$this->type}(\"{$this->message}\", \"{$this->title}\", {$this->options});";
 
         return $this->view->registerJs($js);
     }
