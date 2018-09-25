@@ -7,13 +7,13 @@
 Melalui console:
 
 ```
-composer require --prefer-dist diecoding/yii2-toastr "dev-master"
+composer require --prefer-dist diecoding/yii2-toastr "*"
 ```
 
 atau tambahkan:
 
 ```
-"diecoding/yii2-toastr": "dev-master"
+"diecoding/yii2-toastr": "*"
 ```
 
 pada baris `require` yang terdapat di berkas `composer.json`. Kemudian jalankan

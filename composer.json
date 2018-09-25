@@ -27,6 +27,11 @@
       "diecoding\\toastr\\": "src"
     }
   },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  },
   "authors": [
     {
       "name": "Die Coding",
