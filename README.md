@@ -45,6 +45,5 @@ composer update
 ```php
 \Yii::$app->session->setFlash('error', [['Title', 'Message']]);
 
-
 \Yii::$app->session->setFlash('error', [['Title 1', 'Message 1'], ['Title 2', 'Message 2'], ['Title 3', 'Message 3']]);
 ```
