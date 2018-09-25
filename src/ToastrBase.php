@@ -86,27 +86,27 @@ class ToastrBase extends Widget
 
     /**
      *
-     * @var string $showEasing
+     * @var string $showEasing swing | linear
      */
     public $showEasing = "swing";
 
     /**
      *
-     * @var string $type
+     * @var string $hideEasing swing | linear
      */
-    public $hideEasing = "linear";
+    public $hideEasing = "swing";
 
     /**
      *
-     * @var string $type
+     * @var string $showMethod show | fadeIn | slideDown
      */
-    public $showMethod = "fadeIn";
+    public $showMethod = "slideDown";
 
     /**
      *
-     * @var string $type
+     * @var string $hideMethod hide | fadeOut | slideUp
      */
-    public $hideMethod = "fadeOut";
+    public $hideMethod = "slideUp";
 
     /**
      *
