@@ -31,6 +31,30 @@ composer update
 
 ```php
 \diecoding\toastr\ToastrFlash::widget();
+
+// custom
+\diecoding\toastr\ToastrFlash::widget([
+    "hideDuration"      => 'custom value',
+    "timeOut"           => 'custom value',
+    "extendedTimeOut"   => 'custom value',
+    "showEasing"        => 'custom value',
+    "hideEasing"        => 'custom value',
+    "showMethod"        => 'custom value',
+    "hideMethod"        => 'custom value',
+    "tapToDismiss"      => 'custom value',
+]);
+
+// or
+\diecoding\toastr\ToastrFlash::widget([
+    'options' => [
+        "closeButton"       => 'custom value',
+        "debug"             => 'custom value',
+        "newestOnTop"       => 'custom value',
+        "progressBar"       => 'custom value',
+        "positionClass"     => 'custom value',
+        "preventDuplicates" => 'custom value',
+    ],
+]);
 ```
 
 2. Set Session Flash
