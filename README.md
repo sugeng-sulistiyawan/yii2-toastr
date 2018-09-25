@@ -32,13 +32,13 @@ composer update
 ```
 
 2. Set Session Flash
-..* Cara Basic
+  * Cara Basic
 
 ```php
 \Yii::$app->session->setFlash('error', 'Message');
 ```
 
-..* Cara Advanced
+  * Cara Advanced
 
 ```php
 \Yii::$app->session->setFlash('error', ['title' => 'Title', 'message' => 'Message']);
