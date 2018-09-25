@@ -1,5 +1,5 @@
 # Yii2 Toastr - Simple flash toastr notifications for Yii2
-#### BETA VERSION
+
 
 
 ## Cara Memasang
