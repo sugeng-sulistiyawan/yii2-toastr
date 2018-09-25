@@ -1,10 +1,10 @@
 {
   "name": "diecoding/yii2-toastr",
   "description": "Simple flash toastr notifications for Yii2",
-  "type": "yii2-extension",
+  "type": "yii2-widgets",
   "keywords": [
     "yii2",
-    "extension",
+    "widgets",
     "session",
     "flash",
     "toastr",
