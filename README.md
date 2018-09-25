@@ -4,19 +4,21 @@
 
 ## Cara Memasang
 
-Melalui console:
+* Melalui console
 
 ```
 composer require --prefer-dist diecoding/yii2-toastr "*"
 ```
 
-atau tambahkan:
+* Melalui `composer.json`
+
+  1. Tambahkan pada baris `require`
 
 ```
 "diecoding/yii2-toastr": "*"
 ```
 
-pada baris `require` yang terdapat di berkas `composer.json`. Kemudian jalankan
+  2. Kemudian jalankan
 
 ```
 composer update
