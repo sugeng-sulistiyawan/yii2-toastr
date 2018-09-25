@@ -7,42 +7,31 @@
 
 namespace diecoding\toastr;
 
-use yii\helpers\Html;
-use yii\helpers\Json;
-
 /**
  *
  */
 class ToastrFlash extends ToastrBase
 {
     /**
-     *
-     *
-     * @var object $_session
-     */
-    private $_session;
-
-    /**
      * @inheritdoc
      */
     public function run()
     {
-        $this->_session = \Yii::$app->session;
-        $flashes        = $this->_session->getAllFlashes();
+        $session = \Yii::$app->session;
+        $flashes = $session->getAllFlashes();
         foreach ($flashes as $type => $data) {
             $datas = (array) $data;
-
             foreach ($datas as $message) {
                 Toastr::widget(
                     [
-                        'type'    => Html::encode($type),
-                        'message' => Html::encode($message),
-                        'options' => Json::decode($this->options),
+                        'type'    => $type,
+                        'title'   => is_array($message) ? $message['title'] : "",
+                        'message' => is_array($message) ? $message['message'] : $message,
                     ]
                 );
             }
 
-            $this->_session->removeFlash($type);
+            $session->removeFlash($type);
         }
     }
 }

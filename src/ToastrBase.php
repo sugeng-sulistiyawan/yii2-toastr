@@ -20,71 +20,146 @@ class ToastrBase extends Widget
 {
     /**
      *
-     *
-     * @var string $title
+     * @var bool $closeButton
      */
-    public $title;
+    public $closeButton = false;
 
     /**
      *
-     *
-     * @var string $message
+     * @var bool $debug
      */
-    public $message;
+    public $debug = false;
 
     /**
      *
+     * @var bool $newestOnTop
+     */
+    public $newestOnTop = true;
+
+    /**
+     *
+     * @var bool $progressBar
+     */
+    public $progressBar = true;
+
+    /**
+     *
+     * @var string $positionClass
+     */
+    public $positionClass = "toast-top-right";
+
+    /**
+     *
+     * @var bool $preventDuplicates
+     */
+    public $preventDuplicates = true;
+
+    /**
+     *
+     * @var string $onclick
+     */
+    public $onclick = null;
+
+    /**
+     *
+     * @var string $showDuration
+     */
+    public $showDuration = "300";
+
+    /**
+     *
+     * @var string $hideDuration
+     */
+    public $hideDuration = "1000";
+
+    /**
+     *
+     * @var string $timeOut
+     */
+    public $timeOut = "5000";
+
+    /**
+     *
+     * @var string $extendedTimeOut
+     */
+    public $extendedTimeOut = "1000";
+
+    /**
+     *
+     * @var string $showEasing
+     */
+    public $showEasing = "swing";
+
+    /**
      *
      * @var string $type
      */
-    public $type;
+    public $hideEasing = "linear";
 
     /**
      *
-     *
-     * @var array $options
+     * @var string $type
      */
-    public $options = [
-        "closeButton"       => false,
-        "debug"             => false,
-        "newestOnTop"       => true,
-        "progressBar"       => true,
-        "positionClass"     => "toast-top-right",
-        "preventDuplicates" => false,
-        "onclick"           => null,
-        "showDuration"      => "300",
-        "hideDuration"      => "1000",
-        "timeOut"           => "5000",
-        "extendedTimeOut"   => "1000",
-        "showEasing"        => "swing",
-        "hideEasing"        => "linear",
-        "showMethod"        => "fadeIn",
-        "hideMethod"        => "fadeOut",
-    ];
+    public $showMethod = "fadeIn";
 
-    const TYPE_INFO    = 'info';
-    const TYPE_ERROR   = 'error';
-    const TYPE_SUCCESS = 'success';
-    const TYPE_WARNING = 'warning';
+    /**
+     *
+     * @var string $type
+     */
+    public $hideMethod = "fadeOut";
 
-    const POSITION_TOP_RIGHT      = 'toast-top-right';
-    const POSITION_TOP_LEFT       = 'toast-top-left';
-    const POSITION_TOP_CENTER     = 'toast-top-center';
-    const POSITION_TOP_FULL_WIDTH = 'toast-top-full-width';
+    /**
+     *
+     * @var bool $tapToDismiss
+     */
+    public $tapToDismiss = true;
 
-    const POSITION_BOTTOM_RIGHT      = 'toast-bottom-right';
-    const POSITION_BOTTOM_LEFT       = 'toast-bottom-left';
-    const POSITION_BOTTOM_CENTER     = 'toast-bottom-center';
-    const POSITION_BOTTOM_FULL_WIDTH = 'toast-bottom-full-width';
+    /**
+     *
+     */
+    private $_options;
+
+    /**
+     *
+     */
+    private $_alertTypes = ["info", "error", "success", "warning"];
+
+    const POSITION_TOP_RIGHT      = "toast-top-right";
+    const POSITION_TOP_LEFT       = "toast-top-left";
+    const POSITION_TOP_CENTER     = "toast-top-center";
+    const POSITION_TOP_FULL_WIDTH = "toast-top-full-width";
+
+    const POSITION_BOTTOM_RIGHT      = "toast-bottom-right";
+    const POSITION_BOTTOM_LEFT       = "toast-bottom-left";
+    const POSITION_BOTTOM_CENTER     = "toast-bottom-center";
+    const POSITION_BOTTOM_FULL_WIDTH = "toast-bottom-full-width";
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        $this->view->registerAssetBundle(ToastrAsset::className());		
-		
-        $this->type    = $this->type ? : self::TYPE_INFO;
-        $this->options = Json::encode($this->options);
+        parent::init();
+        $this->view->registerAssetBundle(ToastrAsset::className());
+        $this->_options = [
+            "closeButton"       => $this->closeButton,
+            "debug"             => $this->debug,
+            "newestOnTop"       => $this->newestOnTop,
+            "progressBar"       => $this->progressBar,
+            "positionClass"     => $this->positionClass,
+            "preventDuplicates" => $this->preventDuplicates,
+            "onclick"           => $this->onclick,
+            "showDuration"      => $this->showDuration,
+            "hideDuration"      => $this->hideDuration,
+            "timeOut"           => $this->timeOut,
+            "extendedTimeOut"   => $this->extendedTimeOut,
+            "showEasing"        => $this->showEasing,
+            "hideEasing"        => $this->hideEasing,
+            "showMethod"        => $this->showMethod,
+            "hideMethod"        => $this->hideMethod,
+            "tapToDismiss"      => $this->tapToDismiss,
+        ];
+
+        $this->_options = Json::encode($this->_options);
     }
 }
