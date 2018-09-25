@@ -12,13 +12,13 @@ composer require --prefer-dist diecoding/yii2-toastr "*"
 
 * Melalui `composer.json`
 
-  1. Tambahkan pada baris `require`
+1. Tambahkan pada baris `require`
 
 ```
 "diecoding/yii2-toastr": "*"
 ```
 
-  2. Kemudian jalankan
+2. Kemudian jalankan
 
 ```
 composer update
