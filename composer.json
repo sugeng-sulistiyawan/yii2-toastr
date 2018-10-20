@@ -11,10 +11,11 @@
     "notification",
     "jquery"
   ],
-  "license": "MIT",
+  "homepage": "https://diecoding.com/yii2/plugins/yii2-toastr",
+  "license": "BSD-3-Clause",
   "support": {
-    "issues": "https://github.com/diecoding/yii2-toastr/issues",
-    "source": "https://github.com/diecoding/yii2-toastr"
+    "issues": "https://github.com/die-coding/yii2-toastr/issues",
+    "source": "https://github.com/die-coding/yii2-toastr"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
