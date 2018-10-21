@@ -18,8 +18,9 @@
     "source": "https://github.com/die-coding/yii2-toastr"
   },
   "require": {
-    "yiisoft/yii2": "^2.0.0",
-    "bower-asset/toastr": "^2.1.0"
+		"php": ">=5.4.0",
+		"yiisoft/yii2": "~2.0.14",
+    "bower-asset/toastr": "~2.1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
