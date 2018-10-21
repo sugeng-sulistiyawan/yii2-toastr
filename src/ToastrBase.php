@@ -121,7 +121,7 @@ class ToastrBase extends Widget
     /**
      *
      */
-    const ALERT_TYPES = ["info", "error", "success", "warning"];
+    const ALERT_TYPES = [ "info", "error", "success", "warning" ];
 
     const POSITION_TOP_RIGHT      = "toast-top-right";
     const POSITION_TOP_LEFT       = "toast-top-left";
