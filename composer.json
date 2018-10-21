@@ -18,15 +18,8 @@
     "source": "https://github.com/die-coding/yii2-toastr"
   },
   "require": {
-		"php": ">=5.4.0",
-		"yiisoft/yii2": "~2.0.14",
-    "bower-asset/toastr": "~2.1.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~4.0",
-    "friendsofphp/php-cs-fixer": "^2.0",
-    "squizlabs/php_codesniffer": "*",
-    "phpmd/phpmd": "@stable"
+	"yiisoft/yii2": "^2.0.0",
+    "bower-asset/toastr": "^2.1.0"
   },
   "autoload": {
     "psr-4": {
@@ -36,11 +29,6 @@
   "extra": {
     "branch-alias": {
       "dev-master": "1.0.x-dev"
-    }
-  },
-  "config": {
-    "preferred-install": {
-      "*": "auto"
     }
   },
   "authors": [
