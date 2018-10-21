@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-BSD-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/die-coding/yii2-toastr/master.svg?style=flat-square)](https://travis-ci.org/die-coding/yii2-toastr)
 [![Quality Score](https://img.shields.io/scrutinizer/g/die-coding/yii2-toastr.svg?style=flat-square)](https://scrutinizer-ci.com/g/die-coding/yii2-toastr)
-[![Total Downloads](https://img.shields.io/packagist/dt/die-coding/yii2-toastr.svg?style=flat-square)](https://packagist.org/packages/die-coding/yii2-toastr)
+[![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-toastr.svg?style=flat-square)](https://packagist.org/packages/diecoding/yii2-toastr)
 
 ## Cara Memasang
 
