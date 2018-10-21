@@ -23,7 +23,7 @@
     "bower-asset/toastr": "~2.1.0"
   },
   "require-dev": {
-	"phpunit/phpunit":"~4.8.0"
+	"phpunit/phpunit": "~4.8.0"
   },
   "autoload": {
     "psr-4": {
