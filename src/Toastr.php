@@ -7,6 +7,8 @@
 
 namespace diecoding\toastr;
 
+use yii\helpers\Json;
+
 /**
  *
  */
@@ -35,8 +37,9 @@ class Toastr extends ToastrBase
      */
     public function run()
     {
-        $js = "toastr.{$this->type}(\"{$this->message}\", \"{$this->title}\", {$this->options});";
+		$options = Json::encode($this->options);
+        $js      = "toastr.{$this->type}(\"{$this->message}\", \"{$this->title}\", {$options});";
 
-        return $this->view->registerJs($js);
+        $this->view->registerJs($js);
     }
 }

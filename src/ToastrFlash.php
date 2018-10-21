@@ -8,7 +8,6 @@
 namespace diecoding\toastr;
 
 use Yii;
-use yii\helpers\Json;
 
 /**
  *
@@ -32,7 +31,7 @@ class ToastrFlash extends ToastrBase
                                 "type"    => $type,
                                 "title"   => $value[ 0 ],
                                 "message" => $value[ 1 ],
-                                "options" => Json::decode($this->options),
+                                "options" => $this->options,
                             ]
                         );
                     }
@@ -42,7 +41,7 @@ class ToastrFlash extends ToastrBase
                             [
                                 "type"    => $type,
                                 "message" => $value,
-                                "options" => Json::decode($this->options),
+                                "options" => $this->options,
                             ]
                         );
                     }

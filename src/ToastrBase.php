@@ -9,7 +9,6 @@
 namespace diecoding\toastr;
 
 use yii\base\Widget;
-use yii\helpers\Json;
 
 /**
  *
@@ -116,7 +115,7 @@ class ToastrBase extends Widget
      *
      * @var array $options
      */
-    public $options;
+    public $options = [];
 
     /**
      *
@@ -159,7 +158,6 @@ class ToastrBase extends Widget
             "tapToDismiss"      => $this->tapToDismiss,
         ];
 
-        $options       = ($this->options || !empty($this->options)) ? $this->options : $options;
-        $this->options = Json::encode($options);
+        $options = ! empty($this->options) ? $this->options : $options;
     }
 }
