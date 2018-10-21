@@ -139,25 +139,26 @@ class ToastrBase extends Widget
     {
         parent::init();
         $this->view->registerAssetBundle(ToastrAsset::className());
-        $options = [
-            "closeButton"       => $this->closeButton,
-            "debug"             => $this->debug,
-            "newestOnTop"       => $this->newestOnTop,
-            "progressBar"       => $this->progressBar,
-            "positionClass"     => $this->positionClass,
-            "preventDuplicates" => $this->preventDuplicates,
-            "onclick"           => $this->onclick,
-            "showDuration"      => $this->showDuration,
-            "hideDuration"      => $this->hideDuration,
-            "timeOut"           => $this->timeOut,
-            "extendedTimeOut"   => $this->extendedTimeOut,
-            "showEasing"        => $this->showEasing,
-            "hideEasing"        => $this->hideEasing,
-            "showMethod"        => $this->showMethod,
-            "hideMethod"        => $this->hideMethod,
-            "tapToDismiss"      => $this->tapToDismiss,
-        ];
-
-        $options = ! empty($this->options) ? $this->options : $options;
+		
+		if (empty($this->options)) {
+			$this->options = [
+				"closeButton"       => $this->closeButton,
+				"debug"             => $this->debug,
+				"newestOnTop"       => $this->newestOnTop,
+				"progressBar"       => $this->progressBar,
+				"positionClass"     => $this->positionClass,
+				"preventDuplicates" => $this->preventDuplicates,
+				"onclick"           => $this->onclick,
+				"showDuration"      => $this->showDuration,
+				"hideDuration"      => $this->hideDuration,
+				"timeOut"           => $this->timeOut,
+				"extendedTimeOut"   => $this->extendedTimeOut,
+				"showEasing"        => $this->showEasing,
+				"hideEasing"        => $this->hideEasing,
+				"showMethod"        => $this->showMethod,
+				"hideMethod"        => $this->hideMethod,
+				"tapToDismiss"      => $this->tapToDismiss,
+			];
+		}
     }
 }
