@@ -19,25 +19,25 @@ class ToastrBase extends Widget
 	 *
 	 * @var bool $closeButton
 	 */
-	public $closeButton = false;
+	public $closeButton = FALSE;
 
 	/**
 	 *
 	 * @var bool $debug
 	 */
-	public $debug = false;
+	public $debug = FALSE;
 
 	/**
 	 *
 	 * @var bool $newestOnTop
 	 */
-	public $newestOnTop = true;
+	public $newestOnTop = TRUE;
 
 	/**
 	 *
 	 * @var bool $progressBar
 	 */
-	public $progressBar = true;
+	public $progressBar = TRUE;
 
 	/**
 	 *
@@ -49,13 +49,13 @@ class ToastrBase extends Widget
 	 *
 	 * @var bool $preventDuplicates
 	 */
-	public $preventDuplicates = true;
+	public $preventDuplicates = TRUE;
 
 	/**
 	 *
 	 * @var string $onclick
 	 */
-	public $onclick = null;
+	public $onclick = NULL;
 
 	/**
 	 *
@@ -109,13 +109,13 @@ class ToastrBase extends Widget
 	 *
 	 * @var bool $tapToDismiss
 	 */
-	public $tapToDismiss = true;
+	public $tapToDismiss = TRUE;
 
 	/**
 	 *
 	 * @var array $options
 	 */
-	public $options = [];
+	public $options = [ ];
 
 	/**
 	 *
