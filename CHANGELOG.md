@@ -2,6 +2,30 @@
 
 All Notable changes to `yii2-toastr` will be documented in this file.
 
+## 1.0.3 - Ocktober 22, 2018
+
+## Changed
+- src\\Toastr.php
+- src\\ToastrBase.php
+- src\\ToastrFlash.php
+
+### Added
+- tests
+
+### Deprecated
+- Nothing
+
+### Fixed
+- bug style codes
+
+### Removed
+- Nothing
+
+### Security
+- Nothing
+
+---
+
 ## 1.0.2 - Ocktober 21, 2018
 
 ## Changed
