@@ -7,7 +7,7 @@
 
 namespace diecoding\toastr;
 
-use yii\helpers\Html;
+use Yii;
 use yii\helpers\Json;
 
 /**
@@ -20,7 +20,7 @@ class ToastrFlash extends ToastrBase
      */
     public function run()
     {
-        $session = \Yii::$app->session;
+        $session = Yii::$app->session;
         $flashes = $session->getAllFlashes();
         foreach ($flashes as $type => $data) {
             if (in_array($type, self::ALERT_TYPES)) {
