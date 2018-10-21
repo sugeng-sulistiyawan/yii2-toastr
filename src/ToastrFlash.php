@@ -25,13 +25,13 @@ class ToastrFlash extends ToastrBase
         foreach ($flashes as $type => $data) {
             if (in_array($type, self::ALERT_TYPES)) {
                 $datas = (array) $data;
-                if (is_array($datas[0])) {
+                if (is_array($datas[ 0 ])) {
                     foreach ($datas as $key => $value) {
                         Toastr::widget(
                             [
                                 "type"    => $type,
-                                "title"   => $value[0],
-                                "message" => $value[1],
+                                "title"   => $value[ 0 ],
+                                "message" => $value[ 1 ],
                                 "options" => Json::decode($this->options),
                             ]
                         );
