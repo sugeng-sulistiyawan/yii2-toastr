@@ -1,48 +1,48 @@
 {
-  "name": "diecoding/yii2-toastr",
-  "description": "Simple flash toastr notifications for Yii2",
-  "type": "yii2-widget",
-  "keywords": [
-    "yii2",
-    "widget",
-    "session",
-    "flash",
-    "toastr",
-    "notification",
-    "jquery"
-  ],
-  "homepage": "https://diecoding.com/yii2/plugins/yii2-toastr",
-  "license": "BSD-3-Clause",
-  "support": {
-    "issues": "https://github.com/die-coding/yii2-toastr/issues",
-    "source": "https://github.com/die-coding/yii2-toastr"
-  },
-  "require": {
-	"php": ">=5.6.0",
-	"yiisoft/yii2": "~2.0.0",
-    "bower-asset/toastr": "~2.1.0"
-  },
-  "require-dev": {
-	"phpunit/phpunit": "~4.8.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "diecoding\\toastr\\": "src"
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0.x-dev"
-    }
-  },
-  "authors": [
-    {
-      "name": "Die Coding",
-      "email": "diecoding@gmail.com"
-    },
-    {
-      "name": "Sugeng Sulistiyawan",
-      "email": "sugeng.sulistiyawan@student.uns.ac.id"
-    }
-  ]
+	"name": "diecoding/yii2-toastr",
+	"description": "Simple flash toastr notifications for Yii2",
+	"type": "yii2-widget",
+	"keywords": [
+		"yii2",
+		"widget",
+		"session",
+		"flash",
+		"toastr",
+		"notification",
+		"jquery"
+	],
+	"homepage": "https://diecoding.com/yii2/plugins/yii2-toastr",
+	"license": "BSD-3-Clause",
+	"support": {
+		"issues": "https://github.com/die-coding/yii2-toastr/issues",
+		"source": "https://github.com/die-coding/yii2-toastr"
+	},
+	"require": {
+		"php": ">=5.6.0",
+		"yiisoft/yii2": "~2.0.14",
+		"bower-asset/toastr": "^2.1.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~6.5.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"diecoding\\toastr\\": "src"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0.x-dev"
+		}
+	},
+	"authors": [
+		{
+			"name": "Die Coding",
+			"email": "diecoding@gmail.com"
+		},
+		{
+			"name": "Sugeng Sulistiyawan",
+			"email": "sugeng.sulistiyawan@gmail.com"
+		}
+	]
 }

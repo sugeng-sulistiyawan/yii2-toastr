@@ -11,7 +11,9 @@ namespace diecoding\toastr;
 use yii\base\Widget;
 
 /**
- *
+ * 
+ * {@inheritDoc}
+ * 
  */
 class ToastrBase extends Widget
 {

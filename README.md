@@ -2,19 +2,18 @@
 
 [![Latest Version](https://img.shields.io/github/release/die-coding/yii2-toastr.svg?style=flat-square)](https://github.com/die-coding/yii2-toastr/releases)
 [![Software License](https://img.shields.io/badge/license-BSD-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/die-coding/yii2-toastr/master.svg?style=flat-square)](https://travis-ci.org/die-coding/yii2-toastr)
 [![Quality Score](https://img.shields.io/scrutinizer/g/die-coding/yii2-toastr.svg?style=flat-square)](https://scrutinizer-ci.com/g/die-coding/yii2-toastr)
 [![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-toastr.svg?style=flat-square)](https://packagist.org/packages/diecoding/yii2-toastr)
 
 ## Cara Memasang
 
-* Melalui console
+-   Melalui console
 
 ```
 composer require --prefer-dist diecoding/yii2-toastr "*"
 ```
 
-* Melalui `composer.json`
+-   Melalui `composer.json`
 
 1. Tambahkan pada baris `require`
 
@@ -27,7 +26,6 @@ composer require --prefer-dist diecoding/yii2-toastr "*"
 ```
 composer update
 ```
-
 
 ## Cara Menggunakan
 
@@ -62,7 +60,8 @@ composer update
 ```
 
 2. Set Session Flash
-  * Cara Basic
+
+-   Cara Basic
 
 ```php
 \Yii::$app->session->setFlash('error', 'Message');
@@ -70,7 +69,7 @@ composer update
 \Yii::$app->session->setFlash('error', ['Message 1', 'Message 2', 'Message 3']);
 ```
 
-  * Cara Advanced
+-   Cara Advanced
 
 ```php
 \Yii::$app->session->setFlash('error', [['Title', 'Message']]);
