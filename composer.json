@@ -27,7 +27,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"diecoding\\yii2\\toastr\\": "src"
+			"diecoding\\toastr\\": "src"
 		}
 	},
 	"extra": {

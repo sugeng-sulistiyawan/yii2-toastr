@@ -32,10 +32,10 @@ composer update
 1. Tambahkan di `views\layouts\main.php`
 
 ```php
-\diecoding\yii2\toastr\ToastrFlash::widget();
+\diecoding\toastr\ToastrFlash::widget();
 
 // custom
-\diecoding\yii2\toastr\ToastrFlash::widget([
+\diecoding\toastr\ToastrFlash::widget([
     "hideDuration"      => 'custom value',
     "timeOut"           => 'custom value',
     "extendedTimeOut"   => 'custom value',
@@ -47,7 +47,7 @@ composer update
 ]);
 
 // or
-\diecoding\yii2\toastr\ToastrFlash::widget([
+\diecoding\toastr\ToastrFlash::widget([
     'options' => [
         "closeButton"       => 'custom value',
         "debug"             => 'custom value',
