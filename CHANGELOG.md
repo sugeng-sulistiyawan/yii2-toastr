@@ -2,6 +2,28 @@
 
 All Notable changes to `yii2-toastr` will be documented in this file.
 
+## 1.0.31 - August 12, 2019
+
+## Changed
+- phpunit
+
+### Added
+- Nothing
+
+### Deprecated
+- Nothing
+
+### Fixed
+- bug
+
+### Removed
+- travis
+
+### Security
+- Nothing
+
+---
+
 ## 1.0.3 - Ocktober 22, 2018
 
 ## Changed
