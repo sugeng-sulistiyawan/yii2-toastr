@@ -11,7 +11,6 @@
 		"notification",
 		"jquery"
 	],
-	"homepage": "https://diecoding.com/yii2/plugins/yii2-toastr",
 	"license": "BSD-3-Clause",
 	"support": {
 		"issues": "https://github.com/die-coding/yii2-toastr/issues",
@@ -28,11 +27,6 @@
 	"autoload": {
 		"psr-4": {
 			"diecoding\\toastr\\": "src"
-		}
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.0.x-dev"
 		}
 	},
 	"authors": [
