@@ -2,10 +2,10 @@
 
 All Notable changes to `yii2-toastr` will be documented in this file.
 
-## 1.0.31 - August 12, 2019
+## 2.0.0 - August 12, 2019
 
 ## Changed
-- phpunit
+- psr4
 
 ### Added
 - Nothing
@@ -14,10 +14,10 @@ All Notable changes to `yii2-toastr` will be documented in this file.
 - Nothing
 
 ### Fixed
-- bug
+- Nothing
 
 ### Removed
-- travis
+- Nothing
 
 ### Security
 - Nothing
