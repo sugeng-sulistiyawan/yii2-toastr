@@ -12,7 +12,7 @@ use yii\base\Widget;
 
 /**
  * 
- * {@inheritDoc}
+ * @inheritdoc
  * 
  */
 class ToastrBase extends Widget
