@@ -115,6 +115,12 @@ class ToastrBase extends Widget
 
 	/**
 	 *
+	 * @var bool $useCustomAssets
+	 */
+	public $useCustomAssets = FALSE;
+
+	/**
+	 *
 	 * @var array $options
 	 */
 	public $options = [ ];
@@ -140,7 +146,9 @@ class ToastrBase extends Widget
 	public function init()
 	{
 		parent::init();
-		$this->view->registerAssetBundle(ToastrAsset::className());
+
+		if ($this->useCustomAssets === FALSE)
+			$this->view->registerAssetBundle(ToastrAsset::class);
 		
 		if (empty($this->options)) {
 			$this->options = [
