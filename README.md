@@ -9,8 +9,7 @@ Simple flash toastr notifications for Yii2
 [![PHP Version Require](http://poser.pugx.org/diecoding/yii2-toastr/require/php)](https://packagist.org/packages/diecoding/yii2-toastr)
 
 > Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/)
-
-<br />
+> Demo: https://codeseven.github.io/toastr/demo.html
 
 ## Table of Contents
 
@@ -25,7 +24,6 @@ Simple flash toastr notifications for Yii2
     - [Controllers](#controllers)
       - [Controllers Simple Usage](#controllers-simple-usage)
       - [Controllers Advanced Usage](#controllers-advanced-usage)
-    - [Demo](#demo)
 
 ## Instalation
 
@@ -119,7 +117,3 @@ or if use multiple flash in same session
 ```php
 Yii::$app->session->setFlash('error', [['Title 1', 'Message 1'], ['Title 2', 'Message 2'], ['Title 3', 'Message 3']]);
 ```
-
-### Demo
-
-https://codeseven.github.io/toastr/demo.html
