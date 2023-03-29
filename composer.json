@@ -23,7 +23,7 @@
 		"source": "https://github.com/sugeng-sulistiyawan/yii2-toastr"
 	},
 	"require": {
-		"php": ">=7.4.0",
+		"php": ">=7.0.0",
 		"yiisoft/yii2": "~2.0.0",
 		"bower-asset/toastr": "~2.1.3"
 	},

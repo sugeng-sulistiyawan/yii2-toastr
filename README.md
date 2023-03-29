@@ -43,7 +43,7 @@ or add to the require section of your `composer.json` file.
 
 ## Dependencies
 
-- PHP 7.4+
+- PHP 7.0+
 - [yiisoft/yii2](https://github.com/yiisoft/yii2)
 - [bower-asset/toastr](https://asset-packagist.org/package/bower-asset/toastr)
 
