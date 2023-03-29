@@ -9,8 +9,7 @@ Simple flash toastr notifications for Yii2
 [![License](http://poser.pugx.org/diecoding/yii2-toastr/license)](https://packagist.org/packages/diecoding/yii2-toastr)
 [![PHP Version Require](http://poser.pugx.org/diecoding/yii2-toastr/require/php)](https://packagist.org/packages/diecoding/yii2-toastr)
 
-> Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/)
-> Demo: https://codeseven.github.io/toastr/demo.html
+> Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/) <br> Demo: https://codeseven.github.io/toastr/demo.html
 
 ## Table of Contents
 
