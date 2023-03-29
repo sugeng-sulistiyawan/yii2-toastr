@@ -18,7 +18,6 @@ Simple flash toastr notifications for Yii2
   - [Instalation](#instalation)
   - [Dependencies](#dependencies)
   - [Usage](#usage)
-    - [Upgrade from v1.1.0](#upgrade-from-v110)
     - [Layouts/Views](#layoutsviews)
       - [Layouts/Views Simple Usage](#layoutsviews-simple-usage)
       - [Layouts/Views Advanced Usage](#layoutsviews-advanced-usage)
@@ -49,10 +48,6 @@ or add to the require section of your `composer.json` file.
 
 ## Usage
 
-### Upgrade from v1.1.0
-
-> Just find and replace all in your project from `diecoding\toastr` to `diecoding\yii2\toastr`
-
 ### Layouts/Views
 
 > Add `ToastrFlash` to your layout or view file, example in file `views\layouts\main.php`
@@ -60,7 +55,7 @@ or add to the require section of your `composer.json` file.
 #### Layouts/Views Simple Usage
 
 ```php
-use diecoding\yii2\toastr\ToastrFlash;
+use diecoding\toastr\ToastrFlash;
 
 ToastrFlash::widget();
 ```
@@ -68,7 +63,7 @@ ToastrFlash::widget();
 #### Layouts/Views Advanced Usage
 
 ```php
-use diecoding\yii2\toastr\ToastrFlash;
+use diecoding\toastr\ToastrFlash;
 
 ToastrFlash::widget([
     "typeDefault"       => ToastrFlash::TYPE_INFO,            // (string) default `ToastrFlash::TYPE_INFO`

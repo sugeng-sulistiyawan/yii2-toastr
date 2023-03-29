@@ -32,12 +32,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"diecoding\\yii2\\toastr\\": "src/"
+			"diecoding\\toastr\\": "src/"
 		}
 	},
     "autoload-dev": {
         "psr-4": {
-            "diecoding\\yii2\\toastr\\tests\\": "tests/"
+            "diecoding\\toastr\\tests\\": "tests/"
         }
     },
     "repositories": [

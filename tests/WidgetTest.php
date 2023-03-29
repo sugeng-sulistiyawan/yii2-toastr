@@ -1,6 +1,6 @@
 <?php
 
-namespace diecoding\yii2\toastr\tests;
+namespace diecoding\toastr\tests;
 
 /**
  * Class WidgetTest

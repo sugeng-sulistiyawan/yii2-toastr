@@ -1,8 +1,8 @@
 <?php
 
-namespace diecoding\yii2\toastr;
+namespace diecoding\toastr;
 
-use diecoding\yii2\toastr\assets\ToastrAsset;
+use diecoding\toastr\assets\ToastrAsset;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 
