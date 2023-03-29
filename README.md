@@ -18,6 +18,7 @@ Simple flash toastr notifications for Yii2
   - [Instalation](#instalation)
   - [Dependencies](#dependencies)
   - [Usage](#usage)
+    - [Upgrade from v1.1.0](#upgrade-from-v110)
     - [Layouts/Views](#layoutsviews)
       - [Layouts/Views Simple Usage](#layoutsviews-simple-usage)
       - [Layouts/Views Advanced Usage](#layoutsviews-advanced-usage)
@@ -47,6 +48,10 @@ or add to the require section of your `composer.json` file.
 - [bower-asset/toastr](https://asset-packagist.org/package/bower-asset/toastr)
 
 ## Usage
+
+### Upgrade from v1.1.0
+
+> Just find and replace all in your project from `diecoding\toastr` to `diecoding\yii2\toastr`
 
 ### Layouts/Views
 
