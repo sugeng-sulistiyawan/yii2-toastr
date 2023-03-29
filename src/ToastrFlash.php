@@ -21,33 +21,36 @@ class ToastrFlash extends ToastrBase
         $session = Yii::$app->session;
         $flashes = $session->getAllFlashes();
         foreach ($flashes as $type => $data) {
-            if (in_array($type, self::ALERT_TYPES)) {
-                $datas = (array) $data;
-                if (is_array($datas[0])) {
-                    foreach ($datas as $key => $value) {
-                        Toastr::widget(
-                            [
-                                "type"    => $type,
-                                "title"   => $value[0],
-                                "message" => $value[1],
-                                "options" => $this->options,
-                            ]
-                        );
-                    }
-                } else {
-                    foreach ($datas as $key => $value) {
-                        Toastr::widget(
-                            [
-                                "type"    => $type,
-                                "message" => $value,
-                                "options" => $this->options,
-                            ]
-                        );
-                    }
+            $datas = (array) $data;
+            if (is_array($datas[0])) {
+                foreach ($datas as $value) {
+                    $this->generateToastr($type, $value[1], $value[0]);
                 }
-
-                $session->removeFlash($type);
+            } else {
+                foreach ($datas as $value) {
+                    $this->generateToastr($type, $value);
+                }
             }
+
+            $session->removeFlash($type);
         }
+    }
+
+    /**
+     * Generate Single Toastr
+     * 
+     * @param string $type
+     * @param string $message
+     * @param string|null $title
+     * @return void
+     */
+    private function generateToastr($type, $message, $title = null)
+    {
+        Toastr::widget([
+            "type"    => $type,
+            "title"   => $title,
+            "message" => $message,
+            "options" => $this->options,
+        ]);
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace diecoding\yii2\toastr;
+namespace diecoding\yii2\toastr\assets;
 
 use yii\web\AssetBundle;
+use yii\web\YiiAsset;
 
 /**
  * ToastrAsset represents a collection of asset files, such as CSS, JS, images.
@@ -14,28 +15,28 @@ use yii\web\AssetBundle;
 class ToastrAsset extends AssetBundle
 {
     /**
-     * @var string $sourcePath
+     * @inheritdoc
      */
     public $sourcePath = '@bower/toastr';
 
     /**
-     * @var array $css
+     * @inheritdoc
      */
     public $css = [
-        YII_ENV_DEV ? 'toastr.css' : 'toastr.min.css',
+        'toastr.min.css',
     ];
 
     /**
-     * @var array $js
+     * @inheritdoc
      */
     public $js = [
-        YII_ENV_DEV ? 'toastr.js' : 'toastr.min.js',
+        'toastr.min.js',
     ];
 
     /**
-     * @var array $depends
+     * @inheritdoc
      */
     public $depends = [
-        'yii\web\YiiAsset',
+        YiiAsset::class,
     ];
 }

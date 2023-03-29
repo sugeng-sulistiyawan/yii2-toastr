@@ -5,7 +5,7 @@ namespace diecoding\yii2\toastr;
 use yii\helpers\Json;
 
 /**
- * Class Toastr
+ * Toastr widget
  * 
  * @link [sugeng-sulistiyawan.github.io](sugeng-sulistiyawan.github.io)
  * @author Sugeng Sulistiyawan <sugeng.sulistiyawan@gmail.com>
@@ -36,9 +36,11 @@ class Toastr extends ToastrBase
      */
     public function run()
     {
+        $type    = $this->type && in_array($this->type, self::TYPES) ? $this->type : $this->typeDefault;
+        $title   = $this->title ?: $this->titleDefault;
+        $message = $this->message ?: $this->messageDefault;
         $options = Json::encode($this->options);
-        $js      = "toastr.{$this->type}(\"{$this->message}\", \"{$this->title}\", {$options});";
 
-        $this->view->registerJs($js);
+        $this->view->registerJs("toastr.{$type}(\"{$message}\", \"{$title}\", {$options});");
     }
 }
