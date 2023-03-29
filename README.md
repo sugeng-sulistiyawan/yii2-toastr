@@ -1,13 +1,19 @@
-# Yii2 Toastr - Simple flash toastr notifications for Yii2
+# Yii2 Toastr
+Simple flash toastr notifications for Yii2
 
-[![Latest Version](https://img.shields.io/github/release/die-coding/yii2-toastr.svg?style=flat-square)](https://github.com/die-coding/yii2-toastr/releases)
-[![Software License](https://img.shields.io/badge/license-BSD-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Quality Score](https://img.shields.io/scrutinizer/g/die-coding/yii2-toastr.svg?style=flat-square)](https://scrutinizer-ci.com/g/die-coding/yii2-toastr)
+<br />
+
+
+[![Latest Version](https://img.shields.io/github/release/sugeng-sulistiyawan/yii2-toastr.svg?style=flat-square)](https://github.com/sugeng-sulistiyawan/yii2-toastr/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Quality Score](https://img.shields.io/scrutinizer/g/sugeng-sulistiyawan/yii2-toastr.svg?style=flat-square)](https://scrutinizer-ci.com/g/sugeng-sulistiyawan/yii2-toastr)
 [![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-toastr.svg?style=flat-square)](https://packagist.org/packages/diecoding/yii2-toastr)
 
-## Cara Memasang
+> Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/)
 
--   Melalui console
+## Installation
+
+1. Melalui console Run the [Composer]
 
 ```
 composer require --prefer-dist diecoding/yii2-toastr "*"

@@ -1,16 +1,15 @@
 <?php
-/**
- * @link http://www.diecoding.com/
- * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
- * @copyright Copyright (c) 2018
- */
 
-namespace diecoding\toastr;
+namespace diecoding\yii2\toastr;
 
 use yii\web\AssetBundle;
 
 /**
- *
+ * ToastrAsset represents a collection of asset files, such as CSS, JS, images.
+ * 
+ * @link [sugeng-sulistiyawan.github.io](sugeng-sulistiyawan.github.io)
+ * @author Sugeng Sulistiyawan <sugeng.sulistiyawan@gmail.com>
+ * @copyright Copyright (c) 2023
  */
 class ToastrAsset extends AssetBundle
 {

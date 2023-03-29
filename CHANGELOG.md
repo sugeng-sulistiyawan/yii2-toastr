@@ -2,6 +2,32 @@
 
 All Notable changes to `yii2-toastr` will be documented in this file.
 
+## 2.0.0 - March 30, 2023
+Major Update
+
+## Changed
+- composer
+- phpunit
+- namespace
+- license
+- and more
+
+### Added
+- tests
+
+### Deprecated
+- namespace
+- php 7.0
+
+### Fixed
+- Nothing
+
+### Removed
+- php 7.0
+
+### Security
+- Nothing
+
 ## 1.0.4 - August 12, 2019
 
 ## Changed

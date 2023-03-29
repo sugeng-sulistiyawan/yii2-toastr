@@ -1,19 +1,15 @@
 <?php
-/**
- * @link http://www.diecoding.com/
- * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
- * @copyright Copyright (c) 2018
- */
 
-
-namespace diecoding\toastr;
+namespace diecoding\yii2\toastr;
 
 use yii\base\Widget;
 
 /**
+ * ToastrBase is the base class for widgets.
  * 
- * @inheritdoc
- * 
+ * @link [sugeng-sulistiyawan.github.io](sugeng-sulistiyawan.github.io)
+ * @author Sugeng Sulistiyawan <sugeng.sulistiyawan@gmail.com>
+ * @copyright Copyright (c) 2023
  */
 class ToastrBase extends Widget
 {
@@ -123,12 +119,12 @@ class ToastrBase extends Widget
 	 *
 	 * @var array $options
 	 */
-	public $options = [ ];
+	public $options = [];
 
 	/**
 	 *
 	 */
-	const ALERT_TYPES = [ "info", "error", "success", "warning" ];
+	const ALERT_TYPES = ["info", "error", "success", "warning"];
 
 	const POSITION_TOP_RIGHT      = "toast-top-right";
 	const POSITION_TOP_LEFT       = "toast-top-left";
@@ -149,7 +145,7 @@ class ToastrBase extends Widget
 
 		if ($this->useCustomAssets === FALSE)
 			$this->view->registerAssetBundle(ToastrAsset::class);
-		
+
 		if (empty($this->options)) {
 			$this->options = [
 				"closeButton"       => $this->closeButton,

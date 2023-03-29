@@ -1,28 +1,41 @@
-build
-docs
-vendor
-
-# cache directories
-Thumbs.db
-*.DS_Store
-*.empty
-
-#phpstorm project files
+# phpstorm project files
 .idea
 
-#netbeans project files
+# netbeans project files
 nbproject
 
-#eclipse, zend studio, aptana or other eclipse like project files
+# zend studio for eclipse project files
 .buildpath
 .project
 .settings
-.editorconfig
 
-# mac deployment helpers
-switch
-index
+# windows thumbnail cache
+Thumbs.db
 
-#php_cs
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+
+# local phpunit config
+/phpunit.xml
+
+# local phpunit config
+/.phpunit.result.cache
+
+# local tests configuration
+/tests/data/config.local.php
+
+# runtime cache
+/tests/runtime
+
+# PHP CS Fixer
 .php_cs.cache
-composer.lock
+.php-cs-fixer.cache

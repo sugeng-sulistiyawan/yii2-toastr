@@ -1,6 +1,12 @@
 {
 	"name": "diecoding/yii2-toastr",
 	"description": "Simple flash toastr notifications for Yii2",
+	"authors": [
+		{
+			"name": "Sugeng Sulistiyawan",
+			"email": "sugeng.sulistiyawan@gmail.com"
+		}
+	],
 	"type": "yii2-widget",
 	"keywords": [
 		"yii2",
@@ -11,32 +17,38 @@
 		"notification",
 		"jquery"
 	],
-	"license": "BSD-3-Clause",
+	"license": "MIT",
 	"support": {
-		"issues": "https://github.com/die-coding/yii2-toastr/issues",
-		"source": "https://github.com/die-coding/yii2-toastr"
+		"issues": "https://github.com/sugeng-sulistiyawan/yii2-toastr/issues",
+		"source": "https://github.com/sugeng-sulistiyawan/yii2-toastr"
 	},
 	"require": {
-		"php": ">=7.0",
-		"yiisoft/yii2": "~2.0",
-		"bower-asset/toastr": "^2.1"
+		"php": ">=7.4.0",
+		"yiisoft/yii2": "~2.0.0",
+		"bower-asset/toastr": "^2.1.3"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "<7"
+		"phpunit/phpunit": "~9.5.0"
 	},
 	"autoload": {
 		"psr-4": {
-			"diecoding\\toastr\\": "src"
+			"diecoding\\yii2\\toastr\\": "src/"
 		}
 	},
-	"authors": [
-		{
-			"name": "Die Coding",
-			"email": "diecoding@gmail.com"
-		},
-		{
-			"name": "Sugeng Sulistiyawan",
-			"email": "sugeng.sulistiyawan@gmail.com"
-		}
-	]
+    "autoload-dev": {
+        "psr-4": {
+            "diecoding\\yii2\\toastr\\tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    }
 }
