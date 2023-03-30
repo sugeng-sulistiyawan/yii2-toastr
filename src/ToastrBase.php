@@ -2,7 +2,6 @@
 
 namespace diecoding\toastr;
 
-use diecoding\toastr\assets\ToastrAsset;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 

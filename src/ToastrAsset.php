@@ -1,6 +1,6 @@
 <?php
 
-namespace diecoding\toastr\assets;
+namespace diecoding\toastr;
 
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
