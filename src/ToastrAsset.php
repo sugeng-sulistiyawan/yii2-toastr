@@ -17,7 +17,7 @@ class ToastrAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/toastr';
+    public $sourcePath = '@npm/toastr/build';
 
     /**
      * @inheritdoc

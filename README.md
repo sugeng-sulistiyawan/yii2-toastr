@@ -44,7 +44,7 @@ or add to the require section of your `composer.json` file.
 
 - PHP 7.4+
 - [yiisoft/yii2](https://github.com/yiisoft/yii2)
-- [bower-asset/toastr](https://asset-packagist.org/package/bower-asset/toastr)
+- [npm-asset/toastr](https://asset-packagist.org/package/npm-asset/toastr)
 
 ## Usage
 
