@@ -1,13 +1,13 @@
 # Yii2 Toastr
 Simple flash toastr notifications for Yii2
 
-[![Latest Stable Version](http://poser.pugx.org/diecoding/yii2-toastr/v)](https://packagist.org/packages/diecoding/yii2-toastr)
-[![Total Downloads](http://poser.pugx.org/diecoding/yii2-toastr/downloads)](https://packagist.org/packages/diecoding/yii2-toastr)
-[![Quality Score](https://img.shields.io/scrutinizer/g/sugeng-sulistiyawan/yii2-toastr.svg)](https://scrutinizer-ci.com/g/sugeng-sulistiyawan/yii2-toastr)
+[![Latest Stable Version](http://poser.pugx.org/diecoding/yii2-toastr/v?)](https://packagist.org/packages/diecoding/yii2-toastr)
+[![Total Downloads](http://poser.pugx.org/diecoding/yii2-toastr/downloads?)](https://packagist.org/packages/diecoding/yii2-toastr)
+[![Quality Score](https://img.shields.io/scrutinizer/g/sugeng-sulistiyawan/yii2-toastr.svg?)](https://scrutinizer-ci.com/g/sugeng-sulistiyawan/yii2-toastr)
 [![Build Status](https://app.travis-ci.com/sugeng-sulistiyawan/yii2-toastr.svg?branch=master)](https://app.travis-ci.com/sugeng-sulistiyawan/yii2-toastr)
-[![Latest Unstable Version](http://poser.pugx.org/diecoding/yii2-toastr/v/unstable)](https://packagist.org/packages/diecoding/yii2-toastr)
-[![License](http://poser.pugx.org/diecoding/yii2-toastr/license)](https://packagist.org/packages/diecoding/yii2-toastr)
-[![PHP Version Require](http://poser.pugx.org/diecoding/yii2-toastr/require/php)](https://packagist.org/packages/diecoding/yii2-toastr)
+[![Latest Unstable Version](http://poser.pugx.org/diecoding/yii2-toastr/v/unstable?)](https://packagist.org/packages/diecoding/yii2-toastr)
+[![License](http://poser.pugx.org/diecoding/yii2-toastr/license?)](https://packagist.org/packages/diecoding/yii2-toastr)
+[![PHP Version Require](http://poser.pugx.org/diecoding/yii2-toastr/require/php?)](https://packagist.org/packages/diecoding/yii2-toastr)
 
 > Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/) <br> Demo: https://codeseven.github.io/toastr/demo.html
 
