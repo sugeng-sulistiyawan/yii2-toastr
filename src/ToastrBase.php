@@ -163,8 +163,6 @@ class ToastrBase extends Widget
 	 */
 	public function init()
 	{
-		parent::init();
-
 		if ($this->skipCoreAssets === false) {
 			$this->view->registerAssetBundle(ToastrAsset::class);
 		}
@@ -188,5 +186,7 @@ class ToastrBase extends Widget
 			"escapeHtml"        => $this->escapeHtml,
 			"rtl"               => $this->rtl,
 		], $this->options);
+
+		parent::init();
 	}
 }
