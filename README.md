@@ -31,13 +31,13 @@ Package is available on [Packagist](https://packagist.org/packages/diecoding/yii
 you can install it using [Composer](https://getcomposer.org).
 
 ```shell
-composer require diecoding/yii2-toastr ~2.0
+composer require diecoding/yii2-toastr "^1.0"
 ```
 
 or add to the require section of your `composer.json` file.
 
 ```
-"diecoding/yii2-toastr": "~2.0"
+"diecoding/yii2-toastr": "^1.0"
 ```
 
 ## Dependencies
