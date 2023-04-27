@@ -118,3 +118,7 @@ or if use multiple flash in same session
 ```php
 Yii::$app->session->setFlash('error', [['Title 1', 'Message 1'], ['Title 2', 'Message 2'], ['Title 3', 'Message 3']]);
 ```
+
+---
+
+Read more docs: https://sugengsulistiyawan.my.id/docs/opensource/yii2/toastr/
