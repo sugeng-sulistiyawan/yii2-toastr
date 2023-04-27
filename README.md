@@ -95,6 +95,7 @@ ToastrFlash::widget([
 ### Controllers
 
 > Just use `Yii::$app->session->setFlash($type, $message)` like as usual alert
+
 #### Controllers Simple Usage
 
 ```php
