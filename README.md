@@ -37,7 +37,7 @@ composer require diecoding/yii2-toastr "^1.0"
 
 or add to the require section of your `composer.json` file.
 
-```
+```shell
 "diecoding/yii2-toastr": "^1.0"
 ```
 
