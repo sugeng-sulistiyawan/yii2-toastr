@@ -18,8 +18,8 @@ class ToastrFlash extends ToastrBase
      */
     public function run()
     {
-        $session = Yii::$app->session;
-        $flashes = $session->getAllFlashes();
+        /** @var array $flashes */
+        $flashes = Yii::$app->getSession()->getAllFlashes(true);
         foreach ($flashes as $type => $data) {
             $datas = (array) $data;
             if (is_array($datas[0])) {
@@ -31,8 +31,6 @@ class ToastrFlash extends ToastrBase
                     $this->generateToastr($type, $value);
                 }
             }
-
-            $session->removeFlash($type);
         }
     }
 
