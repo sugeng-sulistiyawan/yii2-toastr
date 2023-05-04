@@ -36,7 +36,7 @@ composer require diecoding/yii2-toastr "^1.0"
 
 or add to the require section of your `composer.json` file.
 
-```
+```shell
 "diecoding/yii2-toastr": "^1.0"
 ```
 
@@ -94,6 +94,7 @@ ToastrFlash::widget([
 ### Controllers
 
 > Just use `Yii::$app->session->setFlash($type, $message)` like as usual alert
+
 #### Controllers Simple Usage
 
 ```php
@@ -117,3 +118,7 @@ or if use multiple flash in same session
 ```php
 Yii::$app->session->setFlash('error', [['Title 1', 'Message 1'], ['Title 2', 'Message 2'], ['Title 3', 'Message 3']]);
 ```
+
+---
+
+Read more docs: https://sugengsulistiyawan.my.id/docs/opensource/yii2/toastr/
