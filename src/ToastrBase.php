@@ -152,6 +152,11 @@ class ToastrBase extends Widget
 	 * @var bool default `false`, `true` if use custom or external toastr assets
 	 */
 	public $skipCoreAssets = false;
+	/**
+	 * @var bool default `false`, `true` if use custom or external toastr assets
+	 * @deprecated see `$skipCoreAssets`
+	 */
+	public $useCustomAssets;
 
 	/**
 	 * @var array default `[]`, Custom Toastr options and override default options
@@ -163,6 +168,8 @@ class ToastrBase extends Widget
 	 */
 	public function init()
 	{
+		// add alias for old support
+		$this->skipCoreAssets = $this->useCustomAssets !== null ? $this->useCustomAssets : $this->skipCoreAssets;
 		if ($this->skipCoreAssets === false) {
 			$this->view->registerAssetBundle(ToastrAsset::class);
 		}
