@@ -14,19 +14,19 @@ use yii\helpers\ArrayHelper;
  */
 class ToastrBase extends Widget
 {
-	const TYPE_INFO    = "info";
-	const TYPE_ERROR   = "error";
+	const TYPE_INFO = "info";
+	const TYPE_ERROR = "error";
 	const TYPE_SUCCESS = "success";
 	const TYPE_WARNING = "warning";
 
-	const POSITION_TOP_RIGHT      = "toast-top-right";
-	const POSITION_TOP_LEFT       = "toast-top-left";
-	const POSITION_TOP_CENTER     = "toast-top-center";
+	const POSITION_TOP_RIGHT = "toast-top-right";
+	const POSITION_TOP_LEFT = "toast-top-left";
+	const POSITION_TOP_CENTER = "toast-top-center";
 	const POSITION_TOP_FULL_WIDTH = "toast-top-full-width";
 
-	const POSITION_BOTTOM_RIGHT      = "toast-bottom-right";
-	const POSITION_BOTTOM_LEFT       = "toast-bottom-left";
-	const POSITION_BOTTOM_CENTER     = "toast-bottom-center";
+	const POSITION_BOTTOM_RIGHT = "toast-bottom-right";
+	const POSITION_BOTTOM_LEFT = "toast-bottom-left";
+	const POSITION_BOTTOM_CENTER = "toast-bottom-center";
 	const POSITION_BOTTOM_FULL_WIDTH = "toast-bottom-full-width";
 
 	const TYPES = [
@@ -152,6 +152,7 @@ class ToastrBase extends Widget
 	 * @var bool default `false`, `true` if use custom or external toastr assets
 	 */
 	public $skipCoreAssets = false;
+
 	/**
 	 * @var bool default `false`, `true` if use custom or external toastr assets
 	 * @deprecated see `$skipCoreAssets`
@@ -175,23 +176,23 @@ class ToastrBase extends Widget
 		}
 
 		$this->options = ArrayHelper::merge([
-			"closeButton"       => $this->closeButton,
-			"debug"             => $this->debug,
-			"newestOnTop"       => $this->newestOnTop,
-			"progressBar"       => $this->progressBar,
-			"positionClass"     => $this->positionClass,
+			"closeButton" => $this->closeButton,
+			"debug" => $this->debug,
+			"newestOnTop" => $this->newestOnTop,
+			"progressBar" => $this->progressBar,
+			"positionClass" => $this->positionClass,
 			"preventDuplicates" => $this->preventDuplicates,
-			"showDuration"      => $this->showDuration,
-			"hideDuration"      => $this->hideDuration,
-			"timeOut"           => $this->timeOut,
-			"extendedTimeOut"   => $this->extendedTimeOut,
-			"showEasing"        => $this->showEasing,
-			"hideEasing"        => $this->hideEasing,
-			"showMethod"        => $this->showMethod,
-			"hideMethod"        => $this->hideMethod,
-			"tapToDismiss"      => $this->tapToDismiss,
-			"escapeHtml"        => $this->escapeHtml,
-			"rtl"               => $this->rtl,
+			"showDuration" => $this->showDuration,
+			"hideDuration" => $this->hideDuration,
+			"timeOut" => $this->timeOut,
+			"extendedTimeOut" => $this->extendedTimeOut,
+			"showEasing" => $this->showEasing,
+			"hideEasing" => $this->hideEasing,
+			"showMethod" => $this->showMethod,
+			"hideMethod" => $this->hideMethod,
+			"tapToDismiss" => $this->tapToDismiss,
+			"escapeHtml" => $this->escapeHtml,
+			"rtl" => $this->rtl,
 		], $this->options);
 
 		parent::init();

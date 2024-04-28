@@ -36,8 +36,8 @@ class Toastr extends ToastrBase
      */
     public function run()
     {
-        $type    = $this->type && in_array($this->type, self::TYPES) ? $this->type : $this->typeDefault;
-        $title   = $this->title ?: $this->titleDefault;
+        $type = $this->type && in_array($this->type, self::TYPES) ? $this->type : $this->typeDefault;
+        $title = $this->title ?: $this->titleDefault;
         $message = $this->message ?: $this->messageDefault;
         $options = Json::encode($this->options);
 

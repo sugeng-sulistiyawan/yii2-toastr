@@ -45,8 +45,8 @@ class ToastrFlash extends ToastrBase
     private function generateToastr($type, $message, $title = null)
     {
         Toastr::widget([
-            "type"    => $type,
-            "title"   => $title,
+            "type" => $type,
+            "title" => $title,
             "message" => $message,
             "options" => $this->options,
         ]);
