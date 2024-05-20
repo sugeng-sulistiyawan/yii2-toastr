@@ -10,7 +10,7 @@ Simple flash toastr notifications for Yii2
 [![License](https://img.shields.io/github/license/sugeng-sulistiyawan/yii2-toastr)](https://github.com/sugeng-sulistiyawan/yii2-toastr)
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/diecoding/yii2-toastr/php?color=6f73a6)](https://packagist.org/packages/diecoding/yii2-toastr)
 
-> Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/) <br> Demo: https://codeseven.github.io/toastr/demo.html
+> Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/) <br> Demo: <https://codeseven.github.io/toastr/demo.html>
 
 ## Table of Contents
 
@@ -24,7 +24,8 @@ Simple flash toastr notifications for Yii2
       - [Layouts/Views Advanced Usage](#layoutsviews-advanced-usage)
     - [Controllers](#controllers)
       - [Controllers Simple Usage](#controllers-simple-usage)
-      - [Controllers Advanced Usage](#controllers-advanced-usage)
+      - [Controllers Advanced Usage (\< v1.4.0)](#controllers-advanced-usage--v140)
+      - [Controllers Advanced Usage With Override Toastr Options (≥ v1.4.0)](#controllers-advanced-usage-with-override-toastr-options--v140)
 
 ## Instalation
 
@@ -104,13 +105,13 @@ Yii::$app->session->setFlash('error', 'Message');
 or if use multiple flash in same session
 
 ```php
-Yii::$app->session->setFlash('error', ['Message 1', 'Message 2', 'Message 3']);
+Yii::$app->session->setFlash('error', [(string) 'Message 1', (string) 'Message 2', (string) 'Message 3']);
 ```
 
-#### Controllers Advanced Usage
+#### Controllers Advanced Usage (< v1.4.0)
 
 ```php
-Yii::$app->session->setFlash('error', [['Title', 'Message']]);
+Yii::$app->session->setFlash('error', [[(string) 'Title', (string) 'Message']]);
 ```
 
 or if use multiple flash in same session
@@ -119,6 +120,56 @@ or if use multiple flash in same session
 Yii::$app->session->setFlash('error', [['Title 1', 'Message 1'], ['Title 2', 'Message 2'], ['Title 3', 'Message 3']]);
 ```
 
+#### Controllers Advanced Usage With Override Toastr Options (≥ v1.4.0)
+
+```php
+Yii::$app->session->setFlash('error', [[(string) 'Title', (string) 'Message', (array) 'Options']]);
+
+// or
+
+Yii::$app->session->setFlash('error', [['title' => (string) 'Title', 'message' => (string) 'Message', 'options' => (array) 'Options']]);
+```
+
+or if use multiple flash in same session
+
+```php
+Yii::$app->session->setFlash('error', [
+  [
+    'Title 1', 
+    'Message 1', 
+    [
+        "progressBar"     => true,
+        "showDuration"    => 300,
+        "hideDuration"    => 10000,
+        "timeOut"         => 5000,
+        "extendedTimeOut" => 1000,
+    ]
+  ],
+  [
+    'title' => 'Title 2', 
+    'message' => 'Message 2', 
+    'options' => [
+        "progressBar"  => false,
+        "hideDuration" => 10000,
+    ]
+  ],
+  ['Title 3', 'Message 3'], 
+  ['Message 4'],
+  [
+    'message' => 'Message 5', 
+    'options' => [
+        "progressBar" => false,
+    ]
+  ],
+  [
+    'title' => 'Title 6', 
+    'options' => [
+        "timeOut" => 50000,
+    ]
+  ],
+]);
+```
+
 ---
 
-Read more docs: https://sugengsulistiyawan.my.id/docs/opensource/yii2/toastr/
+Read more docs: <https://sugengsulistiyawan.my.id/docs/opensource/yii2/toastr/>

@@ -155,7 +155,7 @@ class ToastrBase extends Widget
 
 	/**
 	 * @var bool default `false`, `true` if use custom or external toastr assets
-	 * @deprecated see `$skipCoreAssets`
+     * @deprecated since 1.2.0. Use `$skipCoreAssets` instead, this method will be removed in 2.0.0.
 	 */
 	public $useCustomAssets;
 
@@ -170,7 +170,7 @@ class ToastrBase extends Widget
 	public function init()
 	{
 		// add alias for old support
-		$this->skipCoreAssets = $this->useCustomAssets !== null ? $this->useCustomAssets : $this->skipCoreAssets;
+		$this->skipCoreAssets = $this->skipCoreAssets !== true && $this->useCustomAssets !== null ? $this->useCustomAssets : $this->skipCoreAssets;
 		if ($this->skipCoreAssets === false) {
 			$this->view->registerAssetBundle(ToastrAsset::class);
 		}

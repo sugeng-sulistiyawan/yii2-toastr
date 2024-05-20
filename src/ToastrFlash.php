@@ -3,6 +3,7 @@
 namespace diecoding\toastr;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * ToastrFlash is a widget integrating the [Toastr](https://codeseven.github.io/toastr/).
@@ -18,16 +19,18 @@ class ToastrFlash extends ToastrBase
      */
     public function run()
     {
-        /** @var array $flashes */
-        $flashes = Yii::$app->getSession()->getAllFlashes(true);
-        foreach ($flashes as $type => $data) {
-            $datas = (array) $data;
-            if (is_array($datas[0])) {
-                foreach ($datas as $value) {
-                    $this->generateToastr($type, $value[1], $value[0]);
+        $allFlashes = Yii::$app->getSession()->getAllFlashes(true);
+        foreach ($allFlashes as $type => $flash) {
+            $flashes = (array) $flash;
+            if (is_array($flashes[0])) {
+                // Advanced
+                foreach ($flashes as $data) {
+                    $normalizedData = $this->normalizeData($data);
+                    $this->generateToastr($type, $normalizedData['message'], $normalizedData['title'], $normalizedData['options']);
                 }
             } else {
-                foreach ($datas as $value) {
+                // Simple
+                foreach ($flashes as $value) {
                     $this->generateToastr($type, $value);
                 }
             }
@@ -38,17 +41,37 @@ class ToastrFlash extends ToastrBase
      * Generate Single Toastr
      * 
      * @param string $type
-     * @param string $message
+     * @param string|null $message
      * @param string|null $title
+     * @param array $options
      * @return void
      */
-    private function generateToastr($type, $message, $title = null)
+    private function generateToastr($type, $message = null, $title = null, $options = [])
     {
         Toastr::widget([
             "type" => $type,
             "title" => $title,
             "message" => $message,
-            "options" => $this->options,
+            "options" => $options,
         ]);
+    }
+
+    /**
+     * Normalize Data Flash Session
+     * 
+     * @param array $data
+     * @return array
+     */
+    private function normalizeData($data)
+    {
+        $title = $data['title'] ?? (isset($data[1]) ? ($data[0] ?? null) : null);
+        $message = $data['message'] ?? ($data[1] ?? ($data[0] ?? null));
+        $options = $data['options'] ?? (isset($data[2]) ? $data[2] : []);
+
+        return [
+            'title' => $title,
+            'message' => $message,
+            'options' => ArrayHelper::merge($this->options, (array) $options),
+        ];
     }
 }
