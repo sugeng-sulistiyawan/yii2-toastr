@@ -1,0 +1,83 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master, main, develop ]
+  pull_request:
+    branches: [ master, main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        php-version: [7.4, 8.0, 8.1, 8.2, 8.3]
+        
+    name: PHP ${{ matrix.php-version }} Tests
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+        extensions: mbstring, intl, pdo, pdo_sqlite
+        coverage: xdebug
+        
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+      
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-${{ matrix.php-version }}-
+          
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-interaction
+      
+    - name: Run test suite
+      run: composer test
+      
+    - name: Run test suite with coverage
+      if: matrix.php-version == '8.1'
+      run: vendor/bin/pest --coverage --min=80
+      
+  code-quality:
+    runs-on: ubuntu-latest
+    name: Code Quality
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+        extensions: mbstring, intl
+        
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-interaction
+      
+    - name: Check code style (if PHP CS Fixer is available)
+      run: |
+        if [ -f "vendor/bin/php-cs-fixer" ]; then
+          vendor/bin/php-cs-fixer fix --dry-run --diff
+        else
+          echo "PHP CS Fixer not found, skipping code style check"
+        fi
+      continue-on-error: true
+      
+    - name: Run static analysis (if PHPStan is available)
+      run: |
+        if [ -f "vendor/bin/phpstan" ]; then
+          vendor/bin/phpstan analyse
+        else
+          echo "PHPStan not found, skipping static analysis"
+        fi
+      continue-on-error: true

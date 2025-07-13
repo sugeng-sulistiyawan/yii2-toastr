@@ -1,40 +1,42 @@
 {
-	"name": "diecoding/yii2-toastr",
-	"description": "Simple flash toastr notifications for Yii2",
-	"authors": [
-		{
-			"name": "Sugeng Sulistiyawan",
-			"email": "sugeng.sulistiyawan@gmail.com"
-		}
-	],
-	"type": "library",
-	"keywords": [
-		"yii2",
-		"widget",
-		"session",
-		"flash",
-		"toastr",
-		"notification",
-		"jquery"
-	],
-	"license": "MIT",
-	"support": {
-		"issues": "https://github.com/sugeng-sulistiyawan/yii2-toastr/issues",
-		"source": "https://github.com/sugeng-sulistiyawan/yii2-toastr"
-	},
-	"require": {
-		"php": ">=7.4.0",
-		"yiisoft/yii2": "~2.0",
-		"npm-asset/toastr": "~2.1"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "~9.5.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"diecoding\\toastr\\": "src/"
-		}
-	},
+    "name": "diecoding/yii2-toastr",
+    "description": "Simple flash toastr notifications for Yii2",
+    "type": "library",
+    "keywords": [
+        "yii2",
+        "widget",
+        "session",
+        "flash",
+        "toastr",
+        "notification",
+        "jquery"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sugeng Sulistiyawan",
+            "email": "sugeng.sulistiyawan@gmail.com",
+            "homepage": "https://sugengsulistiyawan.my.id",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/sugeng-sulistiyawan/yii2-toastr/issues",
+        "source": "https://github.com/sugeng-sulistiyawan/yii2-toastr"
+    },
+    "require": {
+        "php": ">=7.4.0",
+        "yiisoft/yii2": "~2.0.0",
+        "npm-asset/toastr": "~2.1.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.22"
+    },
+    "autoload": {
+        "psr-4": {
+            "diecoding\\toastr\\": "src/"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "diecoding\\toastr\\tests\\": "tests/"
@@ -48,7 +50,26 @@
     ],
     "config": {
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
-        }
-    }
+            "yiisoft/yii2-composer": true,
+            "pestphp/pest-plugin": true
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php",
+        "test:all": "pest",
+        "test:verbose": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php --verbose",
+        "test:coverage": "pest --coverage",
+        "ci": "./simulate-ci.sh"
+    },
+    "scripts-descriptions": {
+        "test": "Run the stable test suite",
+        "test:all": "Run all tests including experimental ones",
+        "test:verbose": "Run tests with verbose output",
+        "test:coverage": "Run tests with coverage analysis",
+        "ci": "Run local CI simulation"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

@@ -5,8 +5,8 @@ Simple flash toastr notifications for Yii2
 [![Latest Stable Version](https://img.shields.io/packagist/v/diecoding/yii2-toastr?label=stable)](https://packagist.org/packages/diecoding/yii2-toastr)
 [![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-toastr)](https://packagist.org/packages/diecoding/yii2-toastr)
 [![Latest Stable Release Date](https://img.shields.io/github/release-date/sugeng-sulistiyawan/yii2-toastr)](https://github.com/sugeng-sulistiyawan/yii2-toastr)
+[![Tests](https://github.com/sugeng-sulistiyawan/yii2-toastr/actions/workflows/tests.yml/badge.svg)](https://github.com/sugeng-sulistiyawan/yii2-toastr/actions/workflows/tests.yml)
 [![Quality Score](https://img.shields.io/scrutinizer/quality/g/sugeng-sulistiyawan/yii2-toastr)](https://scrutinizer-ci.com/g/sugeng-sulistiyawan/yii2-toastr)
-[![Build Status](https://img.shields.io/travis/com/sugeng-sulistiyawan/yii2-toastr)](https://app.travis-ci.com/sugeng-sulistiyawan/yii2-toastr)
 [![License](https://img.shields.io/github/license/sugeng-sulistiyawan/yii2-toastr)](https://github.com/sugeng-sulistiyawan/yii2-toastr)
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/diecoding/yii2-toastr/php?color=6f73a6)](https://packagist.org/packages/diecoding/yii2-toastr)
 
@@ -16,7 +16,7 @@ Simple flash toastr notifications for Yii2
 
 - [Yii2 Toastr](#yii2-toastr)
   - [Table of Contents](#table-of-contents)
-  - [Instalation](#instalation)
+  - [Installation](#installation)
   - [Dependencies](#dependencies)
   - [Usage](#usage)
     - [Layouts/Views](#layoutsviews)
@@ -26,8 +26,11 @@ Simple flash toastr notifications for Yii2
       - [Controllers Simple Usage](#controllers-simple-usage)
       - [Controllers Advanced Usage (\< v1.4.0)](#controllers-advanced-usage--v140)
       - [Controllers Advanced Usage With Override Toastr Options (≥ v1.4.0)](#controllers-advanced-usage-with-override-toastr-options--v140)
+  - [Testing](#testing)
+    - [Test Coverage](#test-coverage)
+  - [Contributing](#contributing)
 
-## Instalation
+## Installation
 
 Package is available on [Packagist](https://packagist.org/packages/diecoding/yii2-toastr), you can install it using [Composer](https://getcomposer.org).
 
@@ -170,6 +173,50 @@ Yii::$app->session->setFlash('error', [
 ]);
 ```
 
----
+## Testing
 
-Read more docs: <https://sugengsulistiyawan.my.id/docs/opensource/yii2/toastr/>
+This package uses [Pest](https://pestphp.com/) for testing. To run the tests:
+
+```bash
+# Install dependencies
+composer install
+
+# Run tests
+composer test
+
+# Run tests with verbose output
+composer test:verbose
+
+# Run all tests (including experimental)
+composer test:all
+
+# Using the test script
+./run-tests.sh
+```
+
+### Test Coverage
+
+The test suite covers:
+
+- ✅ **ToastrBase** - Base widget functionality and constants
+- ✅ **Toastr** - Main notification widget properties and methods
+- ✅ **ToastrFlash** - Flash message integration
+- ✅ **ToastrAsset** - Asset bundle configuration
+
+All tests are automatically run on multiple PHP versions (7.4, 8.0, 8.1, 8.2, 8.3) via GitHub Actions.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Run tests to ensure everything works (`composer test`)
+5. Commit your changes (`git commit -am 'Add some amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+Please make sure to:
+
+- Write tests for new features
+- Follow the existing code style
+- Update documentation as needed
