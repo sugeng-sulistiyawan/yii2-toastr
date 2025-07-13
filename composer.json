@@ -62,6 +62,8 @@
         "test:all": "pest",
         "test:verbose": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php --verbose",
         "test:coverage": "pest --coverage",
+        "test:coverage-min": "pest --coverage --min=80",
+        "test:coverage-phpunit": "phpunit --coverage-text --coverage-clover=coverage.xml",
         "ci": "./simulate-ci.sh"
     },
     "scripts-descriptions": {
@@ -69,6 +71,8 @@
         "test:all": "Run all tests including experimental ones",
         "test:verbose": "Run tests with verbose output",
         "test:coverage": "Run tests with coverage analysis",
+        "test:coverage-min": "Run tests with coverage analysis and minimum 80% requirement",
+        "test:coverage-phpunit": "Run tests with PHPUnit coverage as fallback",
         "ci": "Run local CI simulation"
     },
     "minimum-stability": "stable",

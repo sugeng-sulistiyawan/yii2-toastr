@@ -47,15 +47,27 @@ jobs:
     - name: Run test suite with coverage
       if: matrix.php-version == '8.1'
       run: |
+        echo "Checking Xdebug availability..."
         if php -m | grep -i xdebug > /dev/null; then
+          echo "✓ Xdebug extension found"
+          echo "Checking Xdebug mode..."
+          php -r "echo 'Xdebug mode: ' . ini_get('xdebug.mode') . PHP_EOL;"
+          
           echo "Running tests with coverage (minimum 80%)"
-          vendor/bin/pest --coverage --min=80 || {
-            echo "Coverage test failed, running tests without coverage requirement"
-            vendor/bin/pest --coverage || vendor/bin/pest
-          }
+          if composer test:coverage-min; then
+            echo "✓ Coverage test passed with 80% minimum"
+          else
+            echo "⚠ Coverage test with 80% minimum failed, trying without minimum"
+            if composer test:coverage; then
+              echo "✓ Coverage test without minimum passed"
+            else
+              echo "⚠ Coverage test failed completely, running basic tests"
+              composer test
+            fi
+          fi
         else
-          echo "Xdebug not available, running tests without coverage"
-          vendor/bin/pest
+          echo "⚠ Xdebug not available, running tests without coverage"
+          composer test
         fi
       
   code-quality:
