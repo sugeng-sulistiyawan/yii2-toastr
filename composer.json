@@ -57,7 +57,8 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php",
+        "test": "pest tests/",
+        "test:stable": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php",
         "test:all": "pest",
         "test:verbose": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php --verbose",
         "test:coverage": "pest --coverage",
