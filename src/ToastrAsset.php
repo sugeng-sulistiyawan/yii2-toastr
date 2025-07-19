@@ -8,9 +8,8 @@ use yii\web\YiiAsset;
 /**
  * ToastrAsset represents a collection of asset files, such as CSS, JS, images.
  * 
- * @link [sugeng-sulistiyawan.github.io](sugeng-sulistiyawan.github.io)
- * @author Sugeng Sulistiyawan <sugeng.sulistiyawan@gmail.com>
- * @copyright Copyright (c) 2023
+ * @link https://github.com/wanforge
+ * @copyright Copyright (c) 2025
  */
 class ToastrAsset extends AssetBundle
 {

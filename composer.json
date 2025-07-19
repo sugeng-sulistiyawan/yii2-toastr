@@ -15,14 +15,13 @@
     "authors": [
         {
             "name": "Sugeng Sulistiyawan",
-            "email": "sugeng.sulistiyawan@gmail.com",
-            "homepage": "https://sugengsulistiyawan.my.id",
+            "homepage": "https://github.com/wanforge",
             "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/sugeng-sulistiyawan/yii2-toastr/issues",
-        "source": "https://github.com/sugeng-sulistiyawan/yii2-toastr"
+        "issues": "https://github.com/wanforge/yii2-toastr/issues",
+        "source": "https://github.com/wanforge/yii2-toastr"
     },
     "require": {
         "php": ">=7.4.0",

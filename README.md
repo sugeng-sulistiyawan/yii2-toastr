@@ -4,10 +4,10 @@ Simple flash toastr notifications for Yii2
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/diecoding/yii2-toastr?label=stable)](https://packagist.org/packages/diecoding/yii2-toastr)
 [![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-toastr)](https://packagist.org/packages/diecoding/yii2-toastr)
-[![Latest Stable Release Date](https://img.shields.io/github/release-date/sugeng-sulistiyawan/yii2-toastr)](https://github.com/sugeng-sulistiyawan/yii2-toastr)
-[![Tests](https://github.com/sugeng-sulistiyawan/yii2-toastr/actions/workflows/tests.yml/badge.svg)](https://github.com/sugeng-sulistiyawan/yii2-toastr/actions/workflows/tests.yml)
-[![Quality Score](https://img.shields.io/scrutinizer/quality/g/sugeng-sulistiyawan/yii2-toastr)](https://scrutinizer-ci.com/g/sugeng-sulistiyawan/yii2-toastr)
-[![License](https://img.shields.io/github/license/sugeng-sulistiyawan/yii2-toastr)](https://github.com/sugeng-sulistiyawan/yii2-toastr)
+[![Latest Stable Release Date](https://img.shields.io/github/release-date/wanforge/yii2-toastr)](https://github.com/wanforge/yii2-toastr)
+[![Tests](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml/badge.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
+[![Quality Score](https://img.shields.io/scrutinizer/quality/g/wanforge/yii2-toastr)](https://scrutinizer-ci.com/g/wanforge/yii2-toastr)
+[![License](https://img.shields.io/github/license/wanforge/yii2-toastr)](https://github.com/wanforge/yii2-toastr)
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/diecoding/yii2-toastr/php?color=6f73a6)](https://packagist.org/packages/diecoding/yii2-toastr)
 
 > Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/) <br> Demo: <https://codeseven.github.io/toastr/demo.html>
