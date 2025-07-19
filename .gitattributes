@@ -1,15 +1,186 @@
-# Path-based git attributes
+# .gitattributes for Yii2 Toastr
+# Ensures proper handling of files during download and clone operations
 # https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html
 
-# Ignore all test and documentation with "export-ignore".
-/.github                    export-ignore
-/.gitattributes             export-ignore
-/.gitignore                 export-ignore
-/phpunit.xml.dist.disabled  export-ignore
-/.scrutinizer.yml           export-ignore
-/.travis.yml                export-ignore
-/tests                      export-ignore
-/README.md                  export-ignore
-/.vscode                    export-ignore
-/run-tests.sh               export-ignore
-/simulate-ci.sh             export-ignore
+###############################
+# Set default behavior for all files
+###############################
+* text=auto eol=lf
+
+###############################
+# Source code files
+###############################
+*.php text eol=lf diff=php
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.less text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+###############################
+# Configuration files
+###############################
+composer.json text eol=lf
+composer.lock text eol=lf linguist-generated=true
+package.json text eol=lf
+package-lock.json text eol=lf linguist-generated=true
+*.ini text eol=lf
+*.conf text eol=lf
+*.config text eol=lf
+.env* text eol=lf
+.htaccess text eol=lf
+
+###############################
+# Documentation files
+###############################
+*.md text eol=lf linguist-documentation=true
+*.txt text eol=lf
+*.rst text eol=lf
+LICENSE text eol=lf
+CHANGELOG* text eol=lf
+CONTRIBUTING* text eol=lf
+TESTING* text eol=lf
+
+###############################
+# Script files
+###############################
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=lf
+
+###############################
+# PHPUnit and testing files
+###############################
+phpunit.xml* text eol=lf
+*.xml text eol=lf
+
+###############################
+# Git files
+###############################
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.gitmodules text eol=lf
+
+###############################
+# Language detection overrides
+###############################
+# Vendor files should not be analyzed for language statistics
+vendor/* linguist-vendored=true
+node_modules/* linguist-vendored=true
+coverage-html/* linguist-generated=true
+*.min.js linguist-generated=true
+*.min.css linguist-generated=true
+
+# Test files should not count towards language statistics
+tests/* linguist-detectable=false
+
+###############################
+# Binary files (no text processing)
+###############################
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text eol=lf
+*.webp binary
+*.tiff binary
+*.bmp binary
+
+*.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+*.rar binary
+
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+
+###############################
+# Archive and download files
+###############################
+# These files should be available for download
+*.tar.gz binary export-ignore=false
+*.zip binary export-ignore=false
+*.phar binary export-ignore=false
+
+###############################
+# Files to exclude from exports/downloads
+###############################
+# Development and CI files
+.github/**                  export-ignore
+.gitattributes              export-ignore
+.gitignore                  export-ignore
+.scrutinizer.yml            export-ignore
+.styleci.yml                export-ignore
+.travis.yml                 export-ignore
+.editorconfig               export-ignore
+.php_cs                     export-ignore
+.php-cs-fixer.*             export-ignore
+
+# PHPUnit and testing files
+phpunit.xml                 export-ignore
+phpunit.xml.dist            export-ignore
+.phpunit.*                  export-ignore
+tests/**                    export-ignore
+
+# Coverage and test result files
+coverage-html/**            export-ignore
+coverage.xml                export-ignore
+coverage.txt                export-ignore
+junit.xml                   export-ignore
+*.cache                     export-ignore
+
+# Development scripts
+run-tests.sh                export-ignore
+simulate-ci.sh              export-ignore
+validate-coverage.sh        export-ignore
+coverage-aliases.sh         export-ignore
+
+# Documentation (exclude testing docs but keep README and LICENSE)
+TESTING.md                  export-ignore
+CONTRIBUTING.md             export-ignore
+CHANGELOG.md                export-ignore
+
+# IDE and editor files
+.vscode/                    export-ignore
+.idea/                      export-ignore
+*.swp                       export-ignore
+*.swo                       export-ignore
+*~                          export-ignore
+
+# OS files
+.DS_Store                   export-ignore
+Thumbs.db                   export-ignore
+Desktop.ini                 export-ignore
+
+###############################
+# Diff and merge settings
+###############################
+*.php diff=php
+*.js diff=js
+*.json diff=json
+*.css diff=css
+*.md diff=markdown
+
+# Don't merge generated files
+composer.lock merge=ours
+package-lock.json merge=ours
+coverage.xml merge=ours
+*.min.js merge=ours
+*.min.css merge=ours
