@@ -29,7 +29,7 @@
         "npm-asset/toastr": "~2.1.0"
     },
     "require-dev": {
-        "pestphp/pest": "^1.22"
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {
@@ -49,19 +49,18 @@
     ],
     "config": {
         "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "pestphp/pest-plugin": true
+            "yiisoft/yii2-composer": true
         },
         "optimize-autoloader": true,
         "sort-packages": true
     },
     "scripts": {
-        "test": "pest tests/",
-        "test:stable": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php",
-        "test:all": "pest",
-        "test:verbose": "pest tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php --verbose",
-        "test:coverage": "pest --coverage",
-        "test:coverage-min": "pest --coverage --min=80",
+        "test": "phpunit tests/",
+        "test:stable": "phpunit tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php",
+        "test:all": "phpunit",
+        "test:verbose": "phpunit tests/WidgetTest.php tests/ToastrAssetTest.php tests/ToastrFlashTest.php --verbose",
+        "test:coverage": "phpunit --coverage-text",
+        "test:coverage-min": "phpunit --coverage-text --coverage-clover=coverage.xml",
         "test:coverage-phpunit": "phpunit --coverage-text --coverage-clover=coverage.xml",
         "ci": "./simulate-ci.sh"
     },

@@ -1,211 +1,247 @@
 <?php
 
 /**
- * Advanced Pest Testing Examples
- * Menunjukkan fitur-fitur advanced dari Pest
+ * Advanced PHPUnit Testing Examples
+ * Converting from Pest advanced features to PHPUnit
  */
 
+namespace diecoding\toastr\tests;
+
+use PHPUnit\Framework\TestCase;
 use diecoding\toastr\ToastrBase;
 use diecoding\toastr\Toastr;
+use ReflectionClass;
+use Exception;
+use Yii;
 
-// Dataset testing - test dengan multiple data
-dataset('toastr_types', [
-    'info' => ['info'],
-    'success' => ['success'], 
-    'warning' => ['warning'],
-    'error' => ['error'],
-]);
-
-dataset('toastr_positions', [
-    'top-right' => ['toast-top-right'],
-    'top-left' => ['toast-top-left'],
-    'bottom-right' => ['toast-bottom-right'],
-    'bottom-left' => ['toast-bottom-left'],
-    'top-center' => ['toast-top-center'],
-    'bottom-center' => ['toast-bottom-center'],
-    'top-full-width' => ['toast-top-full-width'],
-    'bottom-full-width' => ['toast-bottom-full-width'],
-]);
-
-// Parameterized test dengan dataset
-test('ToastrBase constants match expected values for types', function ($type) {
-    expect($type)->toBeIn(ToastrBase::TYPES);
-})->with('toastr_types');
-
-test('ToastrBase constants match expected values for positions', function ($position) {
-    expect($position)->toBeIn(ToastrBase::POSITIONS);
-})->with('toastr_positions');
-
-// Grouped tests dengan describe-like syntax menggunakan tags
-test('ToastrBase type validation works correctly', function () {
-    foreach (ToastrBase::TYPES as $type) {
-        expect($type)->toBeValidToastrType();
-    }
-})->group('validation');
-
-test('invalid types are rejected by custom expectation', function () {
-    expect('invalid_type')->not->toBeValidToastrType();
-})->group('validation');
-
-// Testing dengan exception expectations
-test('Toastr class can be instantiated without errors', function () {
-    // Setup minimal Yii web app for widget testing
-    if (!isset(Yii::$app) || Yii::$app === null) {
-        $assetsPath = sys_get_temp_dir() . '/test-assets-' . uniqid();
-        @mkdir($assetsPath, 0755, true);
-        
-        $config = [
-            'id' => 'test-app',
-            'basePath' => dirname(__DIR__),
-            'components' => [
-                'assetManager' => [
-                    'basePath' => $assetsPath,
-                    'baseUrl' => '/assets',
-                ],
-                'urlManager' => [
-                    'enablePrettyUrl' => false,
-                ],
-                'request' => [
-                    'cookieValidationKey' => 'test-key',
-                    'scriptFile' => __FILE__,
-                    'scriptUrl' => '/',
-                ],
-            ],
-            'aliases' => [
-                '@webroot' => $assetsPath,
-                '@web' => '/',
-            ],
+class AdvancedTest extends TestCase
+{
+    /**
+     * Data provider for toastr types
+     */
+    public function toastrTypesProvider()
+    {
+        return [
+            'info' => ['info'],
+            'success' => ['success'], 
+            'warning' => ['warning'],
+            'error' => ['error'],
         ];
-        new yii\web\Application($config);
     }
-    
-    // Test that creating a Toastr instance doesn't throw an exception
-    $toastr = null;
-    $success = false;
-    try {
-        $toastr = new Toastr(['skipCoreAssets' => true]); // Skip assets to avoid @webroot issues
-        $success = true;
-    } catch (Exception $e) {
-        // Log the error for debugging
-        error_log('Toastr instantiation failed: ' . $e->getMessage());
+
+    /**
+     * Data provider for toastr positions
+     */
+    public function toastrPositionsProvider()
+    {
+        return [
+            'top-right' => ['toast-top-right'],
+            'top-left' => ['toast-top-left'],
+            'bottom-right' => ['toast-bottom-right'],
+            'bottom-left' => ['toast-bottom-left'],
+            'top-center' => ['toast-top-center'],
+            'bottom-center' => ['toast-bottom-center'],
+            'top-full-width' => ['toast-top-full-width'],
+            'bottom-full-width' => ['toast-bottom-full-width'],
+        ];
+    }
+
+    /**
+     * @dataProvider toastrTypesProvider
+     */
+    public function testToastrBaseConstantsMatchExpectedValuesForTypes($type)
+    {
+        $this->assertContains($type, ToastrBase::TYPES);
+    }
+
+    /**
+     * @dataProvider toastrPositionsProvider
+     */
+    public function testToastrBaseConstantsMatchExpectedValuesForPositions($position)
+    {
+        $this->assertContains($position, ToastrBase::POSITIONS);
+    }
+
+    /**
+     * @group validation
+     */
+    public function testToastrBaseTypeValidationWorksCorrectly()
+    {
+        foreach (ToastrBase::TYPES as $type) {
+            $this->assertContains($type, ToastrBase::TYPES);
+        }
+    }
+
+    /**
+     * @group validation
+     */
+    public function testInvalidTypesAreRejected()
+    {
+        $this->assertNotContains('invalid_type', ToastrBase::TYPES);
+    }
+
+    public function testToastrClassCanBeInstantiatedWithoutErrors()
+    {
+        // Setup minimal Yii web app for widget testing
+        if (!isset(Yii::$app) || Yii::$app === null) {
+            $assetsPath = sys_get_temp_dir() . '/test-assets-' . uniqid();
+            @mkdir($assetsPath, 0755, true);
+            
+            $config = [
+                'id' => 'test-app',
+                'basePath' => dirname(__DIR__),
+                'components' => [
+                    'assetManager' => [
+                        'basePath' => $assetsPath,
+                        'baseUrl' => '/assets',
+                    ],
+                    'urlManager' => [
+                        'enablePrettyUrl' => false,
+                    ],
+                    'request' => [
+                        'cookieValidationKey' => 'test-key',
+                        'scriptFile' => __FILE__,
+                        'scriptUrl' => '/',
+                    ],
+                ],
+                'aliases' => [
+                    '@webroot' => $assetsPath,
+                    '@web' => '/',
+                ],
+            ];
+            new \yii\web\Application($config);
+        }
+        
+        // Test that creating a Toastr instance doesn't throw an exception
+        $toastr = null;
         $success = false;
+        try {
+            $toastr = new Toastr(['skipCoreAssets' => true]); // Skip assets to avoid @webroot issues
+            $success = true;
+        } catch (Exception $e) {
+            // Log the error for debugging
+            error_log('Toastr instantiation failed: ' . $e->getMessage());
+            $success = false;
+        }
+        
+        $this->assertTrue($success);
+        if ($success) {
+            $this->assertInstanceOf(Toastr::class, $toastr);
+        }
     }
-    
-    expect($success)->toBeTrue();
-    if ($success) {
-        expect($toastr)->toBeInstanceOf(Toastr::class);
-    }
-});
 
-// Testing dengan closures dan anonymous functions
-test('ToastrBase arrays have correct structure', function () {
-    $types = ToastrBase::TYPES;
-    $positions = ToastrBase::POSITIONS;
-    
-    expect($types)
-        ->toBeArray()
-        ->toHaveCount(4);
+    public function testToastrBaseArraysHaveCorrectStructure()
+    {
+        $types = ToastrBase::TYPES;
+        $positions = ToastrBase::POSITIONS;
         
-    foreach ($types as $type) {
-        expect($type)->toBeString();
+        $this->assertIsArray($types);
+        $this->assertCount(4, $types);
+            
+        foreach ($types as $type) {
+            $this->assertIsString($type);
+        }
+            
+        $this->assertIsArray($positions);
+        $this->assertCount(8, $positions);
+            
+        foreach ($positions as $position) {
+            $this->assertIsString($position);
+            $this->assertStringContainsString('toast-', $position);
+        }
     }
-        
-    expect($positions)
-        ->toBeArray()
-        ->toHaveCount(8);
-        
-    foreach ($positions as $position) {
-        expect($position)->toBeString();
-        expect($position)->toContain('toast-');
-    }
-});
 
-// Performance testing sederhana  
-test('creating multiple Toastr instances is fast', function () {
-    // Setup minimal Yii app for this test (same config as above)
-    if (!isset(Yii::$app) || Yii::$app === null) {
-        $assetsPath = sys_get_temp_dir() . '/test-assets-perf-' . uniqid();
-        @mkdir($assetsPath, 0755, true);
-        
-        $config = [
-            'id' => 'test-app-perf',
-            'basePath' => dirname(__DIR__),
-            'components' => [
-                'assetManager' => [
-                    'basePath' => $assetsPath,
-                    'baseUrl' => '/assets',
+    /**
+     * @group performance
+     */
+    public function testCreatingMultipleToastrInstancesIsFast()
+    {
+        // Setup minimal Yii app for this test (same config as above)
+        if (!isset(Yii::$app) || Yii::$app === null) {
+            $assetsPath = sys_get_temp_dir() . '/test-assets-perf-' . uniqid();
+            @mkdir($assetsPath, 0755, true);
+            
+            $config = [
+                'id' => 'test-app-perf',
+                'basePath' => dirname(__DIR__),
+                'components' => [
+                    'assetManager' => [
+                        'basePath' => $assetsPath,
+                        'baseUrl' => '/assets',
+                    ],
+                    'urlManager' => [
+                        'enablePrettyUrl' => false,
+                    ],
+                    'request' => [
+                        'cookieValidationKey' => 'test-key',
+                        'scriptFile' => __FILE__,
+                        'scriptUrl' => '/',
+                    ],
                 ],
-                'urlManager' => [
-                    'enablePrettyUrl' => false,
+                'aliases' => [
+                    '@webroot' => $assetsPath,
+                    '@web' => '/',
                 ],
-                'request' => [
-                    'cookieValidationKey' => 'test-key',
-                    'scriptFile' => __FILE__,
-                    'scriptUrl' => '/',
-                ],
-            ],
-            'aliases' => [
-                '@webroot' => $assetsPath,
-                '@web' => '/',
-            ],
-        ];
-        new yii\web\Application($config);
+            ];
+            new \yii\web\Application($config);
+        }
+        
+        $start = microtime(true);
+        
+        $instances = [];
+        for ($i = 0; $i < 10; $i++) { // Reduced from 100 to 10 for faster testing
+            $instances[] = new Toastr(['skipCoreAssets' => true]); // Skip assets to avoid issues
+        }
+        
+        $elapsed = microtime(true) - $start;
+        
+        // Should be very fast (less than 1 second for 10 instances)
+        $this->assertLessThan(1.0, $elapsed);
+        $this->assertEquals(10, count($instances));
     }
-    
-    $start = microtime(true);
-    
-    $instances = [];
-    for ($i = 0; $i < 10; $i++) { // Reduced from 100 to 10 for faster testing
-        $instances[] = new Toastr(['skipCoreAssets' => true]); // Skip assets to avoid issues
+
+    public function testToastrBaseConstantsAreConsistent()
+    {
+        // All type constants should be lowercase
+        foreach (ToastrBase::TYPES as $type) {
+            $this->assertEquals(strtolower($type), $type);
+        }
+        
+        // All position constants should start with 'toast-'
+        foreach (ToastrBase::POSITIONS as $position) {
+            $this->assertStringStartsWith('toast-', $position);
+        }
     }
-    
-    $elapsed = microtime(true) - $start;
-    
-    // Should be very fast (less than 1 second for 10 instances)
-    expect($elapsed)->toBeLessThan(1.0);
-    expect(count($instances))->toBe(10);
-})->group('performance');
 
-// Test dengan conditional logic
-test('ToastrBase constants are consistent', function () {
-    // All type constants should be lowercase
-    foreach (ToastrBase::TYPES as $type) {
-        expect($type)->toBe(strtolower($type));
+    public function testToastrBaseClassStructureIsCorrect()
+    {
+        $reflection = new ReflectionClass(ToastrBase::class);
+        
+        $this->assertEquals(ToastrBase::class, $reflection->getName());
+        $this->assertFalse($reflection->isAbstract());
+        $this->assertFalse($reflection->isInterface());
+        $this->assertEquals('yii\base\Widget', $reflection->getParentClass()->getName());
     }
-    
-    // All position constants should start with 'toast-'
-    foreach (ToastrBase::POSITIONS as $position) {
-        expect($position)->toStartWith('toast-');
+
+    public function testCreateMockYiiAppHelperWorksCorrectly()
+    {
+        $this->assertEquals('test', YII_ENV);
+        $this->assertTrue(YII_DEBUG);
     }
-});
 
-// Test dengan multiple assertions chains
-test('ToastrBase class structure is correct', function () {
-    $reflection = new ReflectionClass(ToastrBase::class);
-    
-    expect($reflection->getName())->toBe(ToastrBase::class);
-    expect($reflection->isAbstract())->toBeFalse();
-    expect($reflection->isInterface())->toBeFalse();
-    expect($reflection->getParentClass()->getName())->toBe('yii\base\Widget');
-});
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testAdvancedFeatureTest()
+    {
+        $this->markTestSkipped('Advanced features not implemented yet');
+    }
 
-// Test dengan custom helper function
-test('createMockYiiApp helper works correctly', function () {
-    $result = createMockYiiApp();
-    expect($result)->toBeTrue();
-    expect(YII_ENV)->toBe('test');
-    expect(YII_DEBUG)->toBeTrue();
-});
-
-// Skip test dengan kondisi tertentu
-test('advanced feature test', function () {
-    // Test advanced features here
-    $result = true;
-    expect($result)->toBeTrue();
-})->skip('Advanced features not implemented yet');
-
-// Placeholder for future features (removed todo() as it's not available in Pest 1.x)
-test('future feature placeholder', function () {
-    // This is a placeholder for future features
-    $this->markTestSkipped('Future feature not implemented yet');
-});
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testFutureFeaturePlaceholder()
+    {
+        $this->markTestSkipped('Future feature not implemented yet');
+    }
+}

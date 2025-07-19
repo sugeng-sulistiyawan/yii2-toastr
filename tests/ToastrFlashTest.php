@@ -1,36 +1,47 @@
 <?php
 
 /**
- * ToastrFlash Widget Tests using Pest
+ * ToastrFlash Widget Tests using PHPUnit
  */
 
+namespace diecoding\toastr\tests;
+
+use PHPUnit\Framework\TestCase;
 use diecoding\toastr\ToastrFlash;
 use diecoding\toastr\ToastrBase;
+use ReflectionClass;
 
-test('ToastrFlash class exists', function () {
-    expect(class_exists(ToastrFlash::class))->toBeTrue();
-    expect(class_exists(ToastrBase::class))->toBeTrue();
-});
+class ToastrFlashTest extends TestCase
+{
+    public function testToastrFlashClassExists()
+    {
+        $this->assertTrue(class_exists(ToastrFlash::class));
+        $this->assertTrue(class_exists(ToastrBase::class));
+    }
 
-test('ToastrFlash extends ToastrBase', function () {
-    $reflection = new ReflectionClass(ToastrFlash::class);
-    expect($reflection->getParentClass()->getName())->toBe(ToastrBase::class);
-});
+    public function testToastrFlashExtendsToastrBase()
+    {
+        $reflection = new ReflectionClass(ToastrFlash::class);
+        $this->assertEquals(ToastrBase::class, $reflection->getParentClass()->getName());
+    }
 
-test('ToastrFlash has required methods', function () {
-    $reflection = new ReflectionClass(ToastrFlash::class);
-    expect($reflection->hasMethod('run'))->toBeTrue();
-    expect($reflection->hasMethod('init'))->toBeTrue();
-    expect($reflection->hasMethod('normalizeData'))->toBeTrue();
-    expect($reflection->hasMethod('generateToastr'))->toBeTrue();
-});
+    public function testToastrFlashHasRequiredMethods()
+    {
+        $reflection = new ReflectionClass(ToastrFlash::class);
+        $this->assertTrue($reflection->hasMethod('run'));
+        $this->assertTrue($reflection->hasMethod('init'));
+        $this->assertTrue($reflection->hasMethod('normalizeData'));
+        $this->assertTrue($reflection->hasMethod('generateToastr'));
+    }
 
-test('ToastrFlash private methods visibility', function () {
-    $reflection = new ReflectionClass(ToastrFlash::class);
-    
-    $normalizeDataMethod = $reflection->getMethod('normalizeData');
-    expect($normalizeDataMethod->isPrivate())->toBeTrue();
-    
-    $generateToastrMethod = $reflection->getMethod('generateToastr');
-    expect($generateToastrMethod->isPrivate())->toBeTrue();
-});
+    public function testToastrFlashPrivateMethodsVisibility()
+    {
+        $reflection = new ReflectionClass(ToastrFlash::class);
+        
+        $normalizeDataMethod = $reflection->getMethod('normalizeData');
+        $this->assertTrue($normalizeDataMethod->isPrivate());
+        
+        $generateToastrMethod = $reflection->getMethod('generateToastr');
+        $this->assertTrue($generateToastrMethod->isPrivate());
+    }
+}

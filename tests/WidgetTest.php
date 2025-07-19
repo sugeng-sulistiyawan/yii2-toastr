@@ -1,85 +1,104 @@
 <?php
 
 /**
- * Toastr Widget Tests using Pest
+ * Toastr Widget Tests using PHPUnit
  */
 
+namespace diecoding\toastr\tests;
+
+use PHPUnit\Framework\TestCase;
 use diecoding\toastr\Toastr;
 use diecoding\toastr\ToastrBase;
+use ReflectionClass;
 
-test('environment is set to test', function () {
-    expect(YII_ENV)->toBe('test');
-});
+class WidgetTest extends TestCase
+{
+    public function testEnvironmentIsSetToTest()
+    {
+        $this->assertEquals('test', YII_ENV);
+    }
 
-test('ToastrBase has correct type constants', function () {
-    expect(ToastrBase::TYPE_INFO)->toBe('info');
-    expect(ToastrBase::TYPE_ERROR)->toBe('error');
-    expect(ToastrBase::TYPE_SUCCESS)->toBe('success');
-    expect(ToastrBase::TYPE_WARNING)->toBe('warning');
-});
+    public function testToastrBaseHasCorrectTypeConstants()
+    {
+        $this->assertEquals('info', ToastrBase::TYPE_INFO);
+        $this->assertEquals('error', ToastrBase::TYPE_ERROR);
+        $this->assertEquals('success', ToastrBase::TYPE_SUCCESS);
+        $this->assertEquals('warning', ToastrBase::TYPE_WARNING);
+    }
 
-test('ToastrBase has correct position constants', function () {
-    expect(ToastrBase::POSITION_TOP_RIGHT)->toBe('toast-top-right');
-    expect(ToastrBase::POSITION_TOP_LEFT)->toBe('toast-top-left');
-    expect(ToastrBase::POSITION_BOTTOM_RIGHT)->toBe('toast-bottom-right');
-    expect(ToastrBase::POSITION_BOTTOM_LEFT)->toBe('toast-bottom-left');
-});
+    public function testToastrBaseHasCorrectPositionConstants()
+    {
+        $this->assertEquals('toast-top-right', ToastrBase::POSITION_TOP_RIGHT);
+        $this->assertEquals('toast-top-left', ToastrBase::POSITION_TOP_LEFT);
+        $this->assertEquals('toast-bottom-right', ToastrBase::POSITION_BOTTOM_RIGHT);
+        $this->assertEquals('toast-bottom-left', ToastrBase::POSITION_BOTTOM_LEFT);
+    }
 
-test('ToastrBase types array contains all valid types', function () {
-    expect(ToastrBase::TYPES)->toHaveCount(4);
-    expect(ToastrBase::TYPES)->toContain('info');
-    expect(ToastrBase::TYPES)->toContain('error');
-    expect(ToastrBase::TYPES)->toContain('success');
-    expect(ToastrBase::TYPES)->toContain('warning');
-});
+    public function testToastrBaseTypesArrayContainsAllValidTypes()
+    {
+        $this->assertCount(4, ToastrBase::TYPES);
+        $this->assertContains('info', ToastrBase::TYPES);
+        $this->assertContains('error', ToastrBase::TYPES);
+        $this->assertContains('success', ToastrBase::TYPES);
+        $this->assertContains('warning', ToastrBase::TYPES);
+    }
 
-test('ToastrBase positions array contains all valid positions', function () {
-    expect(ToastrBase::POSITIONS)->toHaveCount(8);
-    expect(ToastrBase::POSITIONS)->toContain('toast-top-right');
-    expect(ToastrBase::POSITIONS)->toContain('toast-bottom-left');
-});
+    public function testToastrBasePositionsArrayContainsAllValidPositions()
+    {
+        $this->assertCount(8, ToastrBase::POSITIONS);
+        $this->assertContains('toast-top-right', ToastrBase::POSITIONS);
+        $this->assertContains('toast-bottom-left', ToastrBase::POSITIONS);
+    }
 
-test('Toastr widget validates toastr type values', function () {
-    expect('success')->toBeValidToastrType();
-    expect('info')->toBeValidToastrType();
-    expect('warning')->toBeValidToastrType();
-    expect('error')->toBeValidToastrType();
-});
+    public function testToastrWidgetValidatesToastrTypeValues()
+    {
+        $this->assertContains('success', ToastrBase::TYPES);
+        $this->assertContains('info', ToastrBase::TYPES);
+        $this->assertContains('warning', ToastrBase::TYPES);
+        $this->assertContains('error', ToastrBase::TYPES);
+    }
 
-test('Toastr class exists and can be referenced', function () {
-    expect(class_exists(Toastr::class))->toBeTrue();
-    expect(class_exists(ToastrBase::class))->toBeTrue();
-});
+    public function testToastrClassExistsAndCanBeReferenced()
+    {
+        $this->assertTrue(class_exists(Toastr::class));
+        $this->assertTrue(class_exists(ToastrBase::class));
+    }
 
-test('Toastr extends ToastrBase', function () {
-    $reflection = new ReflectionClass(Toastr::class);
-    expect($reflection->getParentClass()->getName())->toBe(ToastrBase::class);
-});
+    public function testToastrExtendsToastrBase()
+    {
+        $reflection = new ReflectionClass(Toastr::class);
+        $this->assertEquals(ToastrBase::class, $reflection->getParentClass()->getName());
+    }
 
-test('ToastrBase has required methods', function () {
-    $reflection = new ReflectionClass(ToastrBase::class);
-    expect($reflection->hasMethod('init'))->toBeTrue();
-    expect($reflection->hasMethod('getView'))->toBeTrue();
-});
+    public function testToastrBaseHasRequiredMethods()
+    {
+        $reflection = new ReflectionClass(ToastrBase::class);
+        $this->assertTrue($reflection->hasMethod('init'));
+        $this->assertTrue($reflection->hasMethod('getView'));
+    }
 
-test('Toastr has required methods', function () {
-    $reflection = new ReflectionClass(Toastr::class);
-    expect($reflection->hasMethod('run'))->toBeTrue();
-});
+    public function testToastrHasRequiredMethods()
+    {
+        $reflection = new ReflectionClass(Toastr::class);
+        $this->assertTrue($reflection->hasMethod('run'));
+    }
 
-test('ToastrBase has required properties', function () {
-    $reflection = new ReflectionClass(ToastrBase::class);
-    expect($reflection->hasProperty('typeDefault'))->toBeTrue();
-    expect($reflection->hasProperty('titleDefault'))->toBeTrue();
-    expect($reflection->hasProperty('messageDefault'))->toBeTrue();
-    expect($reflection->hasProperty('closeButton'))->toBeTrue();
-    expect($reflection->hasProperty('progressBar'))->toBeTrue();
-    expect($reflection->hasProperty('positionClass'))->toBeTrue();
-});
+    public function testToastrBaseHasRequiredProperties()
+    {
+        $reflection = new ReflectionClass(ToastrBase::class);
+        $this->assertTrue($reflection->hasProperty('typeDefault'));
+        $this->assertTrue($reflection->hasProperty('titleDefault'));
+        $this->assertTrue($reflection->hasProperty('messageDefault'));
+        $this->assertTrue($reflection->hasProperty('closeButton'));
+        $this->assertTrue($reflection->hasProperty('progressBar'));
+        $this->assertTrue($reflection->hasProperty('positionClass'));
+    }
 
-test('Toastr has required properties', function () {
-    $reflection = new ReflectionClass(Toastr::class);
-    expect($reflection->hasProperty('type'))->toBeTrue();
-    expect($reflection->hasProperty('title'))->toBeTrue();
-    expect($reflection->hasProperty('message'))->toBeTrue();
-});
+    public function testToastrHasRequiredProperties()
+    {
+        $reflection = new ReflectionClass(Toastr::class);
+        $this->assertTrue($reflection->hasProperty('type'));
+        $this->assertTrue($reflection->hasProperty('title'));
+        $this->assertTrue($reflection->hasProperty('message'));
+    }
+}

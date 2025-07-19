@@ -48,17 +48,17 @@ echo "✅ Verbose test passed"
 # Step 5: Check if we can run coverage (optional)
 echo ""
 echo "📊 Step 5: Checking test coverage capability..."
-if command -v vendor/bin/pest >/dev/null 2>&1; then
-    echo "✅ Pest is available for coverage"
+if command -v vendor/bin/phpunit >/dev/null 2>&1; then
+    echo "✅ PHPUnit is available for coverage"
     # Note: Coverage requires xdebug extension
     if php -m | grep -q xdebug; then
         echo "✅ Xdebug is available, running coverage..."
-        vendor/bin/pest --coverage || echo "⚠️  Coverage failed (may need xdebug configuration)"
+        vendor/bin/phpunit --coverage-text || echo "⚠️  Coverage failed (may need xdebug configuration)"
     else
         echo "⚠️  Xdebug not available, skipping coverage"
     fi
 else
-    echo "⚠️  Pest not found, skipping coverage"
+    echo "⚠️  PHPUnit not found, skipping coverage"
 fi
 
 echo ""

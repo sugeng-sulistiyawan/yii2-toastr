@@ -1,25 +1,35 @@
 <?php
 
 /**
- * ToastrAsset Tests using Pest
+ * ToastrAsset Tests using PHPUnit
  */
 
+namespace diecoding\toastr\tests;
+
+use PHPUnit\Framework\TestCase;
 use diecoding\toastr\ToastrAsset;
 use yii\web\AssetBundle;
+use ReflectionClass;
 
-test('ToastrAsset class exists', function () {
-    expect(class_exists(ToastrAsset::class))->toBeTrue();
-});
+class ToastrAssetTest extends TestCase
+{
+    public function testToastrAssetClassExists()
+    {
+        $this->assertTrue(class_exists(ToastrAsset::class));
+    }
 
-test('ToastrAsset extends AssetBundle', function () {
-    $reflection = new ReflectionClass(ToastrAsset::class);
-    expect($reflection->getParentClass()->getName())->toBe(AssetBundle::class);
-});
+    public function testToastrAssetExtendsAssetBundle()
+    {
+        $reflection = new ReflectionClass(ToastrAsset::class);
+        $this->assertEquals(AssetBundle::class, $reflection->getParentClass()->getName());
+    }
 
-test('ToastrAsset has required properties', function () {
-    $reflection = new ReflectionClass(ToastrAsset::class);
-    expect($reflection->hasProperty('sourcePath'))->toBeTrue();
-    expect($reflection->hasProperty('css'))->toBeTrue();
-    expect($reflection->hasProperty('js'))->toBeTrue();
-    expect($reflection->hasProperty('depends'))->toBeTrue();
-});
+    public function testToastrAssetHasRequiredProperties()
+    {
+        $reflection = new ReflectionClass(ToastrAsset::class);
+        $this->assertTrue($reflection->hasProperty('sourcePath'));
+        $this->assertTrue($reflection->hasProperty('css'));
+        $this->assertTrue($reflection->hasProperty('js'));
+        $this->assertTrue($reflection->hasProperty('depends'));
+    }
+}
