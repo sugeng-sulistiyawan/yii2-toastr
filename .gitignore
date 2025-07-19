@@ -31,6 +31,12 @@ phpunit.phar
 # local phpunit config
 /.phpunit.result.cache
 
+# coverage reports
+/coverage-html/
+coverage.xml
+coverage.txt
+junit.xml
+
 # local tests configuration
 /tests/data/config.local.php
 

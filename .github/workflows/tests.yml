@@ -13,8 +13,12 @@ jobs:
     strategy:
       matrix:
         php-version: [7.4, 8.0, 8.1, 8.2, 8.3]
+        prefer-lowest: [false]
+        include:
+          - php-version: 7.4
+            prefer-lowest: true
         
-    name: PHP ${{ matrix.php-version }} Tests
+    name: PHP ${{ matrix.php-version }} ${{ matrix.prefer-lowest && '(prefer-lowest)' || '' }}
     
     steps:
     - uses: actions/checkout@v4
@@ -23,8 +27,9 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-version }}
-        extensions: mbstring, intl, pdo, pdo_sqlite
-        coverage: xdebug
+        extensions: mbstring, intl, pcov
+        coverage: pcov
+        tools: composer:v2
         
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -39,36 +44,28 @@ jobs:
           ${{ runner.os }}-php-${{ matrix.php-version }}-
           
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-interaction
+      run: |
+        if [ "${{ matrix.prefer-lowest }}" == "true" ]; then
+          composer update --prefer-lowest --prefer-dist --no-interaction
+        else
+          composer install --prefer-dist --no-interaction
+        fi
       
     - name: Run test suite
-      run: composer test
+      run: composer test:all
       
-    - name: Run test suite with coverage
-      if: matrix.php-version == '8.1'
-      run: |
-        echo "Checking Xdebug availability..."
-        if php -m | grep -i xdebug > /dev/null; then
-          echo "✓ Xdebug extension found"
-          echo "Checking Xdebug mode..."
-          php -r "echo 'Xdebug mode: ' . ini_get('xdebug.mode') . PHP_EOL;"
-          
-          echo "Running tests with coverage (minimum 80%)"
-          if composer test:coverage-min; then
-            echo "✓ Coverage test passed with 80% minimum"
-          else
-            echo "⚠ Coverage test with 80% minimum failed, trying without minimum"
-            if composer test:coverage; then
-              echo "✓ Coverage test without minimum passed"
-            else
-              echo "⚠ Coverage test failed completely, running basic tests"
-              composer test
-            fi
-          fi
-        else
-          echo "⚠ Xdebug not available, running tests without coverage"
-          composer test
-        fi
+    - name: Run tests with coverage
+      if: matrix.php-version == '8.1' && matrix.prefer-lowest == false
+      run: composer test:coverage-clover
+
+    - name: Upload coverage reports to Codecov
+      if: matrix.php-version == '8.1' && matrix.prefer-lowest == false
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
       
   code-quality:
     runs-on: ubuntu-latest

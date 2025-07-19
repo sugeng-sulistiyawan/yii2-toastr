@@ -6,6 +6,7 @@ Simple flash toastr notifications for Yii2
 [![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-toastr)](https://packagist.org/packages/diecoding/yii2-toastr)
 [![Latest Stable Release Date](https://img.shields.io/github/release-date/wanforge/yii2-toastr)](https://github.com/wanforge/yii2-toastr)
 [![Tests](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml/badge.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/wanforge/yii2-toastr/branch/master/graph/badge.svg)](https://codecov.io/gh/wanforge/yii2-toastr)
 [![Quality Score](https://img.shields.io/scrutinizer/quality/g/wanforge/yii2-toastr)](https://scrutinizer-ci.com/g/wanforge/yii2-toastr)
 [![License](https://img.shields.io/github/license/wanforge/yii2-toastr)](https://github.com/wanforge/yii2-toastr)
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/diecoding/yii2-toastr/php?color=6f73a6)](https://packagist.org/packages/diecoding/yii2-toastr)
@@ -175,7 +176,7 @@ Yii::$app->session->setFlash('error', [
 
 ## Testing
 
-This package uses [Pest](https://pestphp.com/) for testing. To run the tests:
+This package uses [PHPUnit](https://phpunit.de/) for testing. To run the tests:
 
 ```bash
 # Install dependencies
@@ -184,17 +185,49 @@ composer install
 # Run tests
 composer test
 
+# Run all tests (including experimental)
+composer test:all
+
 # Run tests with verbose output
 composer test:verbose
 
-# Run all tests (including experimental)
-composer test:all
+# Run tests with coverage
+composer test:coverage
 
 # Using the test script
 ./run-tests.sh
 ```
 
 ### Test Coverage
+
+Generate code coverage reports:
+
+```bash
+# Text coverage report (using PCOV)
+composer test:coverage-text
+
+# HTML coverage report (using PCOV)
+composer test:coverage-html
+
+# Clover XML coverage for CI (using PCOV)
+composer test:coverage-clover
+
+# All coverage formats (using PCOV)
+composer test:coverage-min
+```
+
+**Quick Setup for Coverage:**
+
+```bash
+# Install PCOV for fast coverage (recommended)
+sudo apt install php-pcov
+
+# Then run any coverage command
+composer test:coverage-html
+
+# View HTML report
+open coverage-html/index.html  # or your browser
+```
 
 The test suite covers:
 
@@ -203,7 +236,14 @@ The test suite covers:
 - ✅ **ToastrFlash** - Flash message integration
 - ✅ **ToastrAsset** - Asset bundle configuration
 
-All tests are automatically run on multiple PHP versions (7.4, 8.0, 8.1, 8.2, 8.3) via GitHub Actions.
+**Coverage Requirements:**
+
+- HTML reports: `coverage-html/index.html`
+- Requires **PCOV** (recommended) or **Xdebug** extension for coverage generation
+- PCOV is faster and more efficient than Xdebug for coverage
+- Target coverage: **>80%** for new features
+
+All tests are automatically run on multiple PHP versions (7.4, 8.0, 8.1, 8.2, 8.3) via GitHub Actions with coverage reporting.
 
 ## Contributing
 
