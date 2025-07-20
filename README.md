@@ -9,7 +9,7 @@ Simple flash toastr notifications for Yii2
 
 [![Tests](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml/badge.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
 [![Coverage Status](https://codecov.io/gh/wanforge/yii2-toastr/branch/master/graph/badge.svg)](https://codecov.io/gh/wanforge/yii2-toastr)
-[![PHPStan Level](https://img.shields.io/badge/PHPStan-level%203-brightgreen.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
+[![PHPStan Level](https://img.shields.io/badge/PHPStan-level%205-brightgreen.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
 [![PHP CS Fixer](https://img.shields.io/badge/PHP%20CS%20Fixer-PSR--12-brightgreen.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
 
 > Yii2 Toastr uses [Toastr](https://codeseven.github.io/toastr/) library  
@@ -221,7 +221,7 @@ This project maintains high standards through automated quality checks:
 
 - **PHP CodeSniffer** - PSR-12 coding standards
 - **PHP CS Fixer** - Modern PHP code formatting
-- **PHPStan** - Static analysis (level 3)
+- **PHPStan** - Static analysis (level 5)
 
 ```bash
 # Run all quality checks
