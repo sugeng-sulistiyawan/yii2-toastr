@@ -14,13 +14,43 @@ defined('YII_ENV') or define('YII_ENV', 'test');
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
 
-// Create a minimal Yii application for testing
+// Create a minimal Yii web application for testing
 $config = [
     'id' => 'basic-tests',
     'basePath' => dirname(__DIR__),
+    'aliases' => [
+        '@webroot' => dirname(__DIR__) . '/tests/runtime',
+        '@web' => '/',
+    ],
+    'components' => [
+        'assetManager' => [
+            'basePath' => dirname(__DIR__) . '/tests/runtime/assets',
+            'baseUrl' => '/assets',
+        ],
+        'view' => [
+            'class' => 'yii\web\View',
+        ],
+    ],
 ];
 
-new yii\console\Application($config);
+$app = new yii\web\Application($config);
+
+// Override the view component with a mock for testing
+$mockView = new class extends yii\web\View {
+    public function registerAssetBundle($name, $position = null)
+    {
+        // Mock implementation - do nothing
+        return null;
+    }
+    
+    public function registerJs($js, $position = null, $key = null)
+    {
+        // Mock implementation - do nothing  
+        return;
+    }
+};
+
+$app->set('view', $mockView);
 
 /*
 |--------------------------------------------------------------------------

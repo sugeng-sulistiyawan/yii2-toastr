@@ -147,10 +147,7 @@ junit.xml                   export-ignore
 *.cache                     export-ignore
 
 # Development scripts
-run-tests.sh                export-ignore
 simulate-ci.sh              export-ignore
-validate-coverage.sh        export-ignore
-coverage-aliases.sh         export-ignore
 
 # Documentation (exclude testing docs but keep README and LICENSE)
 TESTING.md                  export-ignore

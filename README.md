@@ -193,9 +193,6 @@ composer test:verbose
 
 # Run tests with coverage
 composer test:coverage
-
-# Using the test script
-./run-tests.sh
 ```
 
 ### Test Coverage

@@ -7,12 +7,13 @@
 
 namespace diecoding\toastr\tests;
 
+use Yii;
+use Exception;
+use ReflectionClass;
+use yii\web\Application;
+use diecoding\toastr\Toastr;
 use PHPUnit\Framework\TestCase;
 use diecoding\toastr\ToastrBase;
-use diecoding\toastr\Toastr;
-use ReflectionClass;
-use Exception;
-use Yii;
 
 class AdvancedTest extends TestCase
 {
@@ -23,7 +24,7 @@ class AdvancedTest extends TestCase
     {
         return [
             'info' => ['info'],
-            'success' => ['success'], 
+            'success' => ['success'],
             'warning' => ['warning'],
             'error' => ['error'],
         ];
@@ -86,7 +87,7 @@ class AdvancedTest extends TestCase
         if (!isset(Yii::$app) || Yii::$app === null) {
             $assetsPath = sys_get_temp_dir() . '/test-assets-' . uniqid();
             @mkdir($assetsPath, 0755, true);
-            
+
             $config = [
                 'id' => 'test-app',
                 'basePath' => dirname(__DIR__),
@@ -109,9 +110,9 @@ class AdvancedTest extends TestCase
                     '@web' => '/',
                 ],
             ];
-            new \yii\web\Application($config);
+            new Application($config);
         }
-        
+
         // Test that creating a Toastr instance doesn't throw an exception
         $toastr = null;
         $success = false;
@@ -123,7 +124,7 @@ class AdvancedTest extends TestCase
             error_log('Toastr instantiation failed: ' . $e->getMessage());
             $success = false;
         }
-        
+
         $this->assertTrue($success);
         if ($success) {
             $this->assertInstanceOf(Toastr::class, $toastr);
@@ -134,17 +135,17 @@ class AdvancedTest extends TestCase
     {
         $types = ToastrBase::TYPES;
         $positions = ToastrBase::POSITIONS;
-        
+
         $this->assertIsArray($types);
         $this->assertCount(4, $types);
-            
+
         foreach ($types as $type) {
             $this->assertIsString($type);
         }
-            
+
         $this->assertIsArray($positions);
         $this->assertCount(8, $positions);
-            
+
         foreach ($positions as $position) {
             $this->assertIsString($position);
             $this->assertStringContainsString('toast-', $position);
@@ -160,7 +161,7 @@ class AdvancedTest extends TestCase
         if (!isset(Yii::$app) || Yii::$app === null) {
             $assetsPath = sys_get_temp_dir() . '/test-assets-perf-' . uniqid();
             @mkdir($assetsPath, 0755, true);
-            
+
             $config = [
                 'id' => 'test-app-perf',
                 'basePath' => dirname(__DIR__),
@@ -183,18 +184,18 @@ class AdvancedTest extends TestCase
                     '@web' => '/',
                 ],
             ];
-            new \yii\web\Application($config);
+            new Application($config);
         }
-        
+
         $start = microtime(true);
-        
+
         $instances = [];
         for ($i = 0; $i < 10; $i++) { // Reduced from 100 to 10 for faster testing
             $instances[] = new Toastr(['skipCoreAssets' => true]); // Skip assets to avoid issues
         }
-        
+
         $elapsed = microtime(true) - $start;
-        
+
         // Should be very fast (less than 1 second for 10 instances)
         $this->assertLessThan(1.0, $elapsed);
         $this->assertEquals(10, count($instances));
@@ -206,7 +207,7 @@ class AdvancedTest extends TestCase
         foreach (ToastrBase::TYPES as $type) {
             $this->assertEquals(strtolower($type), $type);
         }
-        
+
         // All position constants should start with 'toast-'
         foreach (ToastrBase::POSITIONS as $position) {
             $this->assertStringStartsWith('toast-', $position);
@@ -216,7 +217,7 @@ class AdvancedTest extends TestCase
     public function testToastrBaseClassStructureIsCorrect()
     {
         $reflection = new ReflectionClass(ToastrBase::class);
-        
+
         $this->assertEquals(ToastrBase::class, $reflection->getName());
         $this->assertFalse($reflection->isAbstract());
         $this->assertFalse($reflection->isInterface());
@@ -227,21 +228,5 @@ class AdvancedTest extends TestCase
     {
         $this->assertEquals('test', YII_ENV);
         $this->assertTrue(YII_DEBUG);
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testAdvancedFeatureTest()
-    {
-        $this->markTestSkipped('Advanced features not implemented yet');
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testFutureFeaturePlaceholder()
-    {
-        $this->markTestSkipped('Future feature not implemented yet');
     }
 }

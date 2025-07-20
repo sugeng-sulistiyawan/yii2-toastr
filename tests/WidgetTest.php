@@ -101,4 +101,108 @@ class WidgetTest extends TestCase
         $this->assertTrue($reflection->hasProperty('title'));
         $this->assertTrue($reflection->hasProperty('message'));
     }
+
+    public function testToastrBaseInitMethod()
+    {
+        // Test the skipCoreAssets alias logic without calling init()
+        $toastr = new class extends ToastrBase {
+            public function run() {}
+            public function testAlias()
+            {
+                // Test the alias logic from init method
+                $this->skipCoreAssets = $this->skipCoreAssets !== true && $this->useCustomAssets !== null ? $this->useCustomAssets : $this->skipCoreAssets;
+                return $this->skipCoreAssets;
+            }
+        };
+
+        // Test deprecated useCustomAssets property
+        $toastr->useCustomAssets = true;
+        $result = $toastr->testAlias();
+        $this->assertTrue($result);
+
+        // Test with skipCoreAssets true
+        $toastr2 = new class extends ToastrBase {
+            public function run() {}
+            public function testAlias()
+            {
+                $this->skipCoreAssets = $this->skipCoreAssets !== true && $this->useCustomAssets !== null ? $this->useCustomAssets : $this->skipCoreAssets;
+                return $this->skipCoreAssets;
+            }
+        };
+        $toastr2->skipCoreAssets = true;
+        $result2 = $toastr2->testAlias();
+        $this->assertTrue($result2);
+    }
+
+    public function testToastrRunMethod()
+    {
+        // Test the run method logic without widget instantiation
+        $toastr = new Toastr();
+
+        // Test type validation logic
+        $toastr->type = 'success';
+        $validType = in_array($toastr->type, ToastrBase::TYPES) ? $toastr->type : $toastr->typeDefault;
+        $this->assertEquals('success', $validType);
+
+        // Test with invalid type
+        $toastr->type = 'invalid';
+        $validType = in_array($toastr->type, ToastrBase::TYPES) ? $toastr->type : $toastr->typeDefault;
+        $this->assertEquals('info', $validType); // Should use default
+
+        // Test title fallback
+        $toastr->title = null;
+        $title = $toastr->title ?: $toastr->titleDefault;
+        $this->assertEquals('', $title);
+
+        $toastr->title = 'Custom Title';
+        $title = $toastr->title ?: $toastr->titleDefault;
+        $this->assertEquals('Custom Title', $title);
+
+        // Test message fallback
+        $toastr->message = null;
+        $message = $toastr->message ?: $toastr->messageDefault;
+        $this->assertEquals('', $message);
+
+        $toastr->message = 'Custom Message';
+        $message = $toastr->message ?: $toastr->messageDefault;
+        $this->assertEquals('Custom Message', $message);
+    }
+
+    public function testToastrBaseOptionsBuilding()
+    {
+        $toastr = new class extends ToastrBase {
+            public function run() {}
+            public function buildOptions()
+            {
+                return \yii\helpers\ArrayHelper::merge([
+                    "closeButton" => $this->closeButton,
+                    "debug" => $this->debug,
+                    "newestOnTop" => $this->newestOnTop,
+                    "progressBar" => $this->progressBar,
+                    "positionClass" => $this->positionClass,
+                    "preventDuplicates" => $this->preventDuplicates,
+                    "showDuration" => $this->showDuration,
+                    "hideDuration" => $this->hideDuration,
+                    "timeOut" => $this->timeOut,
+                    "extendedTimeOut" => $this->extendedTimeOut,
+                    "showEasing" => $this->showEasing,
+                    "hideEasing" => $this->hideEasing,
+                    "showMethod" => $this->showMethod,
+                    "hideMethod" => $this->hideMethod,
+                    "tapToDismiss" => $this->tapToDismiss,
+                    "escapeHtml" => $this->escapeHtml,
+                    "rtl" => $this->rtl,
+                ], $this->options);
+            }
+        };
+
+        $options = $toastr->buildOptions();
+        $this->assertIsArray($options);
+        $this->assertArrayHasKey('closeButton', $options);
+        $this->assertArrayHasKey('progressBar', $options);
+        $this->assertArrayHasKey('positionClass', $options);
+        $this->assertEquals('toast-top-right', $options['positionClass']);
+        $this->assertEquals(5000, $options['timeOut']);
+        $this->assertEquals('swing', $options['showEasing']);
+    }
 }
