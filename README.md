@@ -8,7 +8,7 @@ Simple flash toastr notifications for Yii2
 [![License](https://img.shields.io/github/license/wanforge/yii2-toastr)](https://github.com/wanforge/yii2-toastr)
 
 [![Tests](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml/badge.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
-[![Coverage Status](https://img.shields.io/codecov/c/github/wanforge/yii2-toastr/master?label=coverage)](https://codecov.io/gh/wanforge/yii2-toastr)
+[![Coverage Status](https://codecov.io/gh/wanforge/yii2-toastr/branch/master/graph/badge.svg)](https://codecov.io/gh/wanforge/yii2-toastr)
 [![PHPStan Level](https://img.shields.io/badge/PHPStan-level%203-brightgreen.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
 [![PHP CS Fixer](https://img.shields.io/badge/PHP%20CS%20Fixer-PSR--12-brightgreen.svg)](https://github.com/wanforge/yii2-toastr/actions/workflows/tests.yml)
 
