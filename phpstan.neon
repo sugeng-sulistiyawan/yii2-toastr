@@ -6,7 +6,7 @@
 # @copyright Copyright (c) 2018-2025
 
 parameters:
-    level: 3
+    level: 5
     paths:
         - src
         - tests
