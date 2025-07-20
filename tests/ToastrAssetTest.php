@@ -6,11 +6,11 @@
 
 namespace diecoding\toastr\tests;
 
-use ReflectionClass;
-use yii\web\YiiAsset;
-use yii\web\AssetBundle;
-use PHPUnit\Framework\TestCase;
 use diecoding\toastr\ToastrAsset;
+use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use yii\web\AssetBundle;
+use yii\web\YiiAsset;
 
 class ToastrAssetTest extends TestCase
 {

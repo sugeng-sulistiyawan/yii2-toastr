@@ -1,0 +1,21 @@
+parameters:
+    level: 3
+    paths:
+        - src
+        - tests
+    excludePaths:
+        - tests/runtime/*
+        - vendor/*
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # Ignore Yii2 framework specific patterns
+        - '#Access to static property \$app on an unknown class Yii#'
+        - '#Constant YII_ENV_TEST not found#'
+        - '#always evaluate to true#'
+        - '#Ternary operator condition is always#'
+        - '#Property .* is never read, only written#'
+        - '#If condition is always true#'
+        - '#should return yii\\web\\View but returns#'
+        - '#Result of method .* \(void\) is used#'
+        - '#Property .* does not accept null#'
+        - '#should return yii\\web\\AssetBundle but returns null#'

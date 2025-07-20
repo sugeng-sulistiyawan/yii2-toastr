@@ -6,16 +6,16 @@
 
 namespace diecoding\toastr\tests;
 
-use Yii;
-use yii\web\View;
-use ReflectionClass;
-use yii\web\Session;
-use yii\web\Application;
-use yii\web\AssetManager;
 use diecoding\toastr\Toastr;
-use PHPUnit\Framework\TestCase;
 use diecoding\toastr\ToastrBase;
 use diecoding\toastr\ToastrFlash;
+use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use Yii;
+use yii\web\Application;
+use yii\web\AssetManager;
+use yii\web\Session;
+use yii\web\View;
 
 class ToastrFlashTest extends TestCase
 {
@@ -71,7 +71,7 @@ class ToastrFlashTest extends TestCase
         $data = [
             'title' => 'Test Title',
             'message' => 'Test Message',
-            'options' => ['timeOut' => 3000]
+            'options' => ['timeOut' => 3000],
         ];
         $result = $method->invoke($toastr, $data);
         $this->assertEquals('Test Title', $result['title']);
@@ -135,7 +135,7 @@ class ToastrFlashTest extends TestCase
         Yii::$app = $mockApp;
 
         // Create a test class that exposes renderToastr
-        $toastr = new class extends ToastrFlash {
+        $toastr = new class () extends ToastrFlash {
             public function init()
             {
                 // Skip parent init to avoid asset issues
@@ -213,6 +213,7 @@ class ToastrFlashTest extends TestCase
         // Test generateToastr method
         $generateMethod = $reflection->getMethod('generateToastr');
         $generateMethod->setAccessible(true);
+
         try {
             $generateMethod->invoke($toastr, 'warning', 'Warning Title', 'Warning Message');
         } catch (\Throwable $e) {
@@ -222,6 +223,7 @@ class ToastrFlashTest extends TestCase
         // Test renderToastr method - THIS IS THE KEY ONE
         $renderMethod = $reflection->getMethod('renderToastr');
         $renderMethod->setAccessible(true);
+
         try {
             $renderMethod->invoke($toastr, 'error', 'Error Title', 'Error Message', ['test' => 'option']);
         } catch (\Throwable $e) {
@@ -242,7 +244,7 @@ class ToastrFlashTest extends TestCase
             'success' => ['Success message'],
             'error' => ['Error message'],
             'warning' => ['Warning message'],
-            'info' => ['Info message']
+            'info' => ['Info message'],
         ]);
 
         $mockApp = $this->createMock(Application::class);
@@ -250,7 +252,7 @@ class ToastrFlashTest extends TestCase
         Yii::$app = $mockApp;
 
         // Create a ToastrFlash that will try to execute all paths
-        $toastr = new class extends ToastrFlash {
+        $toastr = new class () extends ToastrFlash {
             public function init()
             {
                 // Skip asset registration
@@ -308,8 +310,10 @@ class ToastrFlashTest extends TestCase
     private function testHasValidViewCompletely()
     {
         // Test 1: hasValidView returns false when view is null
-        $toastr = new class extends ToastrFlash {
-            public function init() {}
+        $toastr = new class () extends ToastrFlash {
+            public function init()
+            {
+            }
             public function getView()
             {
                 return null;
@@ -321,8 +325,10 @@ class ToastrFlashTest extends TestCase
         $this->assertFalse($method->invoke($toastr));
 
         // Test 2: hasValidView returns false when exception is thrown
-        $toastr = new class extends ToastrFlash {
-            public function init() {}
+        $toastr = new class () extends ToastrFlash {
+            public function init()
+            {
+            }
             public function getView()
             {
                 throw new \Exception('View error');
@@ -334,8 +340,10 @@ class ToastrFlashTest extends TestCase
         $this->assertFalse($method->invoke($toastr));
 
         // Test 3: hasValidView returns false when object has no registerJs method
-        $toastr = new class extends ToastrFlash {
-            public function init() {}
+        $toastr = new class () extends ToastrFlash {
+            public function init()
+            {
+            }
             public function getView()
             {
                 return new \stdClass();
@@ -348,13 +356,15 @@ class ToastrFlashTest extends TestCase
 
         // Test 4: hasValidView returns true when view has registerJs method
         $mockView = $this->createMock(View::class);
-        $toastr = new class($mockView) extends ToastrFlash {
+        $toastr = new class ($mockView) extends ToastrFlash {
             private $mockView;
             public function __construct($mockView)
             {
                 $this->mockView = $mockView;
             }
-            public function init() {}
+            public function init()
+            {
+            }
             public function getView()
             {
                 return $this->mockView;
@@ -368,8 +378,10 @@ class ToastrFlashTest extends TestCase
 
     private function testNormalizeDataCompletely()
     {
-        $toastr = new class(['options' => ['global' => 'value']]) extends ToastrFlash {
-            public function init() {}
+        $toastr = new class (['options' => ['global' => 'value']]) extends ToastrFlash {
+            public function init()
+            {
+            }
         };
         $reflection = new ReflectionClass($toastr);
         $method = $reflection->getMethod('normalizeData');
@@ -381,43 +393,43 @@ class ToastrFlashTest extends TestCase
             [
                 'data' => ['title' => 'T1', 'message' => 'M1', 'options' => ['opt' => 'val']],
                 'expectedTitle' => 'T1',
-                'expectedMessage' => 'M1'
+                'expectedMessage' => 'M1',
             ],
             // No title key, has [1]
             [
                 'data' => ['message' => 'M2', 1 => 'T2'],
                 'expectedTitle' => null,
-                'expectedMessage' => 'M2'
+                'expectedMessage' => 'M2',
             ],
             // No title key, no [1], has [0]
             [
                 'data' => ['message' => 'M3', 0 => 'T3'],
                 'expectedTitle' => null,
-                'expectedMessage' => 'M3'
+                'expectedMessage' => 'M3',
             ],
             // Indexed array [title, message, options]
             [
                 'data' => ['T4', 'M4', ['opt' => 'val4']],
                 'expectedTitle' => 'T4',
-                'expectedMessage' => 'M4'
+                'expectedMessage' => 'M4',
             ],
             // Indexed array [title, message]
             [
                 'data' => ['T5', 'M5'],
                 'expectedTitle' => 'T5',
-                'expectedMessage' => 'M5'
+                'expectedMessage' => 'M5',
             ],
             // Single element [message]
             [
                 'data' => ['M6'],
                 'expectedTitle' => null,
-                'expectedMessage' => 'M6'
+                'expectedMessage' => 'M6',
             ],
             // Empty array
             [
                 'data' => [],
                 'expectedTitle' => null,
-                'expectedMessage' => null
+                'expectedMessage' => null,
             ],
         ];
 
@@ -432,8 +444,10 @@ class ToastrFlashTest extends TestCase
     private function testGenerateToastrCompletely()
     {
         // Test 1: generateToastr returns early in test environment
-        $toastr = new class extends ToastrFlash {
-            public function init() {}
+        $toastr = new class () extends ToastrFlash {
+            public function init()
+            {
+            }
         };
         $reflection = new ReflectionClass($toastr);
         $method = $reflection->getMethod('generateToastr');
@@ -442,10 +456,12 @@ class ToastrFlashTest extends TestCase
         $this->assertNull($result);
 
         // Test 2: generateToastr calls renderToastr when hasValidView is true
-        $toastr = new class extends ToastrFlash {
+        $toastr = new class () extends ToastrFlash {
             public $renderCalled = false;
             public $renderArgs = [];
-            public function init() {}
+            public function init()
+            {
+            }
             protected function hasValidView()
             {
                 return true;
@@ -466,9 +482,11 @@ class ToastrFlashTest extends TestCase
 
     private function testRenderToastrCompletely()
     {
-        $toastr = new class extends ToastrFlash {
+        $toastr = new class () extends ToastrFlash {
             public $lastRender = null;
-            public function init() {}
+            public function init()
+            {
+            }
             protected function renderToastr($type, $title, $message, $options)
             {
                 $this->lastRender = compact('type', 'title', 'message', 'options');
@@ -494,39 +512,39 @@ class ToastrFlashTest extends TestCase
             [
                 'flashes' => [
                     'success' => ['Simple message'],
-                    'error' => ['Error 1', 'Error 2']
+                    'error' => ['Error 1', 'Error 2'],
                 ],
-                'expectedCount' => 3
+                'expectedCount' => 3,
             ],
             // Advanced flash messages
             [
                 'flashes' => [
                     'info' => [
-                        ['title' => 'Info', 'message' => 'Info msg', 'options' => ['timeout' => 5000]]
+                        ['title' => 'Info', 'message' => 'Info msg', 'options' => ['timeout' => 5000]],
                     ],
                     'warning' => [
-                        ['Warning Title', 'Warning Message', ['close' => true]]
-                    ]
+                        ['Warning Title', 'Warning Message', ['close' => true]],
+                    ],
                 ],
-                'expectedCount' => 2
+                'expectedCount' => 2,
             ],
             // Empty arrays (should be skipped)
             [
                 'flashes' => [
                     'success' => [],
-                    'error' => null  // null becomes empty array after (array) cast
+                    'error' => null,  // null becomes empty array after (array) cast
                 ],
-                'expectedCount' => 0
+                'expectedCount' => 0,
             ],
             // Mixed scenarios
             [
                 'flashes' => [
                     'success' => ['Simple'],
                     'info' => [['title' => 'Complex', 'message' => 'Complex msg']],
-                    'error' => [] // Empty, should be skipped
+                    'error' => [], // Empty, should be skipped
                 ],
-                'expectedCount' => 2
-            ]
+                'expectedCount' => 2,
+            ],
         ];
 
         foreach ($scenarios as $scenario) {
@@ -537,9 +555,11 @@ class ToastrFlashTest extends TestCase
             $mockApp->method('getSession')->willReturn($mockSession);
             Yii::$app = $mockApp;
 
-            $toastr = new class extends ToastrFlash {
+            $toastr = new class () extends ToastrFlash {
                 public $renderedItems = [];
-                public function init() {}
+                public function init()
+                {
+                }
                 protected function generateToastr($type, $message = null, $title = null, $options = [])
                 {
                     $this->renderedItems[] = compact('type', 'title', 'message', 'options');

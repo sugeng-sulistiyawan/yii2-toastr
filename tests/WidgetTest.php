@@ -6,9 +6,9 @@
 
 namespace diecoding\toastr\tests;
 
-use PHPUnit\Framework\TestCase;
 use diecoding\toastr\Toastr;
 use diecoding\toastr\ToastrBase;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
 class WidgetTest extends TestCase
@@ -105,12 +105,15 @@ class WidgetTest extends TestCase
     public function testToastrBaseInitMethod()
     {
         // Test the skipCoreAssets alias logic without calling init()
-        $toastr = new class extends ToastrBase {
-            public function run() {}
+        $toastr = new class () extends ToastrBase {
+            public function run()
+            {
+            }
             public function testAlias()
             {
                 // Test the alias logic from init method
                 $this->skipCoreAssets = $this->skipCoreAssets !== true && $this->useCustomAssets !== null ? $this->useCustomAssets : $this->skipCoreAssets;
+
                 return $this->skipCoreAssets;
             }
         };
@@ -121,11 +124,14 @@ class WidgetTest extends TestCase
         $this->assertTrue($result);
 
         // Test with skipCoreAssets true
-        $toastr2 = new class extends ToastrBase {
-            public function run() {}
+        $toastr2 = new class () extends ToastrBase {
+            public function run()
+            {
+            }
             public function testAlias()
             {
                 $this->skipCoreAssets = $this->skipCoreAssets !== true && $this->useCustomAssets !== null ? $this->useCustomAssets : $this->skipCoreAssets;
+
                 return $this->skipCoreAssets;
             }
         };
@@ -170,8 +176,10 @@ class WidgetTest extends TestCase
 
     public function testToastrBaseOptionsBuilding()
     {
-        $toastr = new class extends ToastrBase {
-            public function run() {}
+        $toastr = new class () extends ToastrBase {
+            public function run()
+            {
+            }
             public function buildOptions()
             {
                 return \yii\helpers\ArrayHelper::merge([

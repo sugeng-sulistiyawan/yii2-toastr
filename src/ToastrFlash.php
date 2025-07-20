@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 
 /**
  * ToastrFlash is a widget integrating the [Toastr](https://codeseven.github.io/toastr/).
- * 
+ *
  * @link https://github.com/wanforge
  * @copyright Copyright (c) 2025
  */
@@ -21,7 +21,7 @@ class ToastrFlash extends ToastrBase
         $allFlashes = Yii::$app->getSession()->getAllFlashes(true);
         foreach ($allFlashes as $type => $flash) {
             $flashes = (array) $flash;
-            if (!empty($flashes) && is_array($flashes[0])) {
+            if (! empty($flashes) && is_array($flashes[0])) {
                 // Advanced
                 foreach ($flashes as $data) {
                     $normalizedData = $this->normalizeData($data);
@@ -38,7 +38,7 @@ class ToastrFlash extends ToastrBase
 
     /**
      * Generate Single Toastr
-     * 
+     *
      * @param string $type
      * @param string|null $message
      * @param string|null $title
@@ -48,16 +48,16 @@ class ToastrFlash extends ToastrBase
     protected function generateToastr($type, $message = null, $title = null, $options = [])
     {
         // For testing: if in test environment and view is null, just return
-        if (YII_ENV_TEST && !$this->hasValidView()) {
+        if (YII_ENV_TEST && ! $this->hasValidView()) {
             return;
         }
-        
+
         $this->renderToastr($type, $title, $message, $options);
     }
 
     /**
      * Render the Toastr widget - can be overridden for testing
-     * 
+     *
      * @param string $type
      * @param string|null $title
      * @param string|null $message
@@ -76,13 +76,14 @@ class ToastrFlash extends ToastrBase
 
     /**
      * Check if we have a valid view for rendering
-     * 
+     *
      * @return bool
      */
     protected function hasValidView()
     {
         try {
             $view = $this->getView();
+
             return $view !== null && method_exists($view, 'registerJs');
         } catch (\Exception $e) {
             return false;
@@ -91,7 +92,7 @@ class ToastrFlash extends ToastrBase
 
     /**
      * Normalize Data Flash Session
-     * 
+     *
      * @param array $data
      * @return array
      */

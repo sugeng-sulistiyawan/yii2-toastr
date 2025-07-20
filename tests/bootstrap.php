@@ -36,16 +36,16 @@ $config = [
 $app = new yii\web\Application($config);
 
 // Override the view component with a mock for testing
-$mockView = new class extends yii\web\View {
+$mockView = new class () extends yii\web\View {
     public function registerAssetBundle($name, $position = null)
     {
         // Mock implementation - do nothing
         return null;
     }
-    
+
     public function registerJs($js, $position = null, $key = null)
     {
-        // Mock implementation - do nothing  
+        // Mock implementation - do nothing
         return;
     }
 };
@@ -63,13 +63,13 @@ $app->set('view', $mockView);
 
 function createMockYiiApp()
 {
-    if (!defined('YII_DEBUG')) {
+    if (! defined('YII_DEBUG')) {
         define('YII_DEBUG', true);
     }
-    if (!defined('YII_ENV')) {
+    if (! defined('YII_ENV')) {
         define('YII_ENV', 'test');
     }
-    
+
     // Mock basic Yii application for testing if needed
     return true;
 }

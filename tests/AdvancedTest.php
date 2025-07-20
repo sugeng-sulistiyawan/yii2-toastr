@@ -7,13 +7,13 @@
 
 namespace diecoding\toastr\tests;
 
-use Yii;
-use Exception;
-use ReflectionClass;
-use yii\web\Application;
 use diecoding\toastr\Toastr;
-use PHPUnit\Framework\TestCase;
 use diecoding\toastr\ToastrBase;
+use Exception;
+use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use Yii;
+use yii\web\Application;
 
 class AdvancedTest extends TestCase
 {
@@ -84,7 +84,7 @@ class AdvancedTest extends TestCase
     public function testToastrClassCanBeInstantiatedWithoutErrors()
     {
         // Setup minimal Yii web app for widget testing
-        if (!isset(Yii::$app) || Yii::$app === null) {
+        if (! isset(Yii::$app) || Yii::$app === null) {
             $assetsPath = sys_get_temp_dir() . '/test-assets-' . uniqid();
             @mkdir($assetsPath, 0755, true);
 
@@ -116,6 +116,7 @@ class AdvancedTest extends TestCase
         // Test that creating a Toastr instance doesn't throw an exception
         $toastr = null;
         $success = false;
+
         try {
             $toastr = new Toastr(['skipCoreAssets' => true]); // Skip assets to avoid @webroot issues
             $success = true;
@@ -158,7 +159,7 @@ class AdvancedTest extends TestCase
     public function testCreatingMultipleToastrInstancesIsFast()
     {
         // Setup minimal Yii app for this test (same config as above)
-        if (!isset(Yii::$app) || Yii::$app === null) {
+        if (! isset(Yii::$app) || Yii::$app === null) {
             $assetsPath = sys_get_temp_dir() . '/test-assets-perf-' . uniqid();
             @mkdir($assetsPath, 0755, true);
 

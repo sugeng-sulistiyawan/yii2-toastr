@@ -25,9 +25,41 @@ if [ $? -ne 0 ]; then
 fi
 echo "✅ Dependencies installed successfully"
 
-# Step 3: Run test suite
+# Step 4: Run code quality checks
 echo ""
-echo "🧪 Step 3: Running test suite..."
+echo "🔍 Step 4: Running code quality checks..."
+
+# PHP CodeSniffer
+echo "  🧹 Running PHP CodeSniffer..."
+composer phpcs
+if [ $? -ne 0 ]; then
+    echo "❌ PHP CodeSniffer failed!"
+    exit 1
+fi
+echo "✅ PHP CodeSniffer passed"
+
+# PHP CS Fixer
+echo "  🎨 Running PHP CS Fixer (dry run)..."
+composer cs
+if [ $? -ne 0 ]; then
+    echo "❌ PHP CS Fixer found issues!"
+    echo "💡 Run 'composer cs:fix' to automatically fix issues"
+    exit 1
+fi
+echo "✅ PHP CS Fixer passed"
+
+# PHPStan
+echo "  🔬 Running PHPStan static analysis..."
+composer phpstan
+if [ $? -ne 0 ]; then
+    echo "❌ PHPStan found issues!"
+    exit 1
+fi
+echo "✅ PHPStan passed"
+
+# Step 5: Run test suite
+echo ""
+echo "🧪 Step 5: Running test suite..."
 composer test
 if [ $? -ne 0 ]; then
     echo "❌ Test suite failed!"
@@ -35,9 +67,9 @@ if [ $? -ne 0 ]; then
 fi
 echo "✅ Test suite passed"
 
-# Step 4: Run test with verbose (optional)
+# Step 6: Run test with verbose (optional)
 echo ""
-echo "🔍 Step 4: Running test suite with verbose output..."
+echo "🔍 Step 6: Running test suite with verbose output..."
 composer test:verbose
 if [ $? -ne 0 ]; then
     echo "❌ Verbose test failed!"
@@ -45,9 +77,9 @@ if [ $? -ne 0 ]; then
 fi
 echo "✅ Verbose test passed"
 
-# Step 5: Check if we can run coverage (optional)
+# Step 7: Check if we can run coverage (optional)
 echo ""
-echo "📊 Step 5: Checking test coverage capability..."
+echo "📊 Step 7: Checking test coverage capability..."
 if command -v vendor/bin/phpunit >/dev/null 2>&1; then
     echo "✅ PHPUnit is available for coverage"
     # Note: Coverage requires xdebug extension
