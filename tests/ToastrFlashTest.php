@@ -796,4 +796,144 @@ class ToastrFlashTest extends TestCase
             $this->assertInstanceOf(\Exception::class, $e);
         }
     }
+
+    /**
+     * Test generateToastr when hasValidView returns false
+     *
+     * @return void
+     */
+    public function testGenerateToastrWhenHasValidViewReturnsFalse()
+    {
+        // Create a ToastrFlash class that forces hasValidView to return false
+        $toastr = new class () extends ToastrFlash {
+            /**
+             * Skip parent init to avoid asset issues
+             *
+             * @return void
+             */
+            public function init()
+            {
+                // Skip parent init to avoid asset issues
+            }
+
+            /**
+             * Force hasValidView to return false
+             *
+             * @return bool
+             */
+            protected function hasValidView()
+            {
+                return false;
+            }
+        };
+
+        $reflection = new ReflectionClass($toastr);
+        $method = $reflection->getMethod('generateToastr');
+        $method->setAccessible(true);
+
+        // When hasValidView returns false, generateToastr should return early (null)
+        $result = $method->invoke(
+            $toastr,
+            'success',
+            'Test message',
+            'Test title',
+            []
+        );
+
+        // The method should return null when hasValidView is false
+        $this->assertNull($result);
+    }
+
+    /**
+     * Test the complete flow when hasValidView returns false
+     *
+     * @return void
+     */
+    public function testCompleteFlowWithHasValidViewFalse()
+    {
+        // Mock session with flash messages
+        $mockSession = $this->createMock(Session::class);
+        $mockSession->method('getAllFlashes')->willReturn(
+            [
+                'success' => ['Test success message'],
+                'error' => ['Test error message'],
+            ]
+        );
+
+        $mockApp = $this->createMock(Application::class);
+        $mockApp->method('getSession')->willReturn($mockSession);
+        Yii::$app = $mockApp;
+
+        // Create ToastrFlash that forces hasValidView to return false
+        $toastr = new class () extends ToastrFlash {
+            public $generateToastrCalls = [];
+
+            /**
+             * Skip parent init
+             *
+             * @return void
+             */
+            public function init()
+            {
+                // Skip parent init
+            }
+
+            /**
+             * Force hasValidView to return false
+             *
+             * @return bool
+             */
+            protected function hasValidView()
+            {
+                return false;
+            }
+
+            /**
+             * Track calls to generateToastr
+             *
+             * @param string      $type    The notification type
+             * @param string|null $message The notification message
+             * @param string|null $title   The notification title
+             * @param array       $options The notification options
+             *
+             * @return mixed
+             */
+            protected function generateToastr(
+                $type,
+                $message = null,
+                $title = null,
+                $options = []
+            ) {
+                // Track calls to generateToastr
+                $this->generateToastrCalls[] = compact(
+                    'type',
+                    'message',
+                    'title',
+                    'options'
+                );
+
+                // Call parent which should return early due to hasValidView = false
+                return parent::generateToastr($type, $message, $title, $options);
+            }
+        };
+
+        // Run the widget
+        $toastr->run();
+
+        // Verify that generateToastr was called for each flash message
+        $this->assertCount(2, $toastr->generateToastrCalls);
+
+        // Verify the calls were made with correct parameters
+        $this->assertEquals('success', $toastr->generateToastrCalls[0]['type']);
+        $this->assertEquals(
+            'Test success message',
+            $toastr->generateToastrCalls[0]['message']
+        );
+
+        $this->assertEquals('error', $toastr->generateToastrCalls[1]['type']);
+        $this->assertEquals(
+            'Test error message',
+            $toastr->generateToastrCalls[1]['message']
+        );
+    }
 }
