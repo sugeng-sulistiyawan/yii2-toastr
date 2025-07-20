@@ -1,3 +1,8 @@
+# .gitignore for Yii2 Toastr
+# @link https://github.com/wanforge
+# @author Sugeng Sulistiyawan
+# @copyright Copyright (c) 2018-2025
+
 # phpstorm project files
 .idea
 

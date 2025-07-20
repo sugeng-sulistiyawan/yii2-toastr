@@ -9,7 +9,8 @@ use yii\helpers\ArrayHelper;
  * ToastrFlash is a widget integrating the [Toastr](https://codeseven.github.io/toastr/).
  *
  * @link https://github.com/wanforge
- * @copyright Copyright (c) 2025
+ * @author Sugeng Sulistiyawan
+ * @copyright Copyright (c) 2018-2025
  */
 class ToastrFlash extends ToastrBase
 {

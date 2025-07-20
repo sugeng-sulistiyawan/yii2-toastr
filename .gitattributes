@@ -1,6 +1,10 @@
 # .gitattributes for Yii2 Toastr
 # Ensures proper handling of files during download and clone operations
 # https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html
+# 
+# @link https://github.com/wanforge
+# @author Sugeng Sulistiyawan
+# @copyright Copyright (c) 2018-2025
 
 ###############################
 # Set default behavior for all files

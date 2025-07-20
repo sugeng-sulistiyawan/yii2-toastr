@@ -9,7 +9,8 @@ use yii\helpers\ArrayHelper;
  * ToastrBase is the base class for widgets.
  *
  * @link https://github.com/wanforge
- * @copyright Copyright (c) 2025
+ * @author Sugeng Sulistiyawan
+ * @copyright Copyright (c) 2018-2025
  */
 class ToastrBase extends Widget
 {

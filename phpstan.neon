@@ -1,3 +1,10 @@
+# PHPStan configuration for Yii2 Toastr
+# Static analysis configuration optimized for Yii2 projects
+#
+# @link https://github.com/wanforge
+# @author Sugeng Sulistiyawan
+# @copyright Copyright (c) 2018-2025
+
 parameters:
     level: 3
     paths:

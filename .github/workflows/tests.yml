@@ -1,3 +1,10 @@
+# GitHub Actions Workflow for Yii2 Toastr
+# Tests across multiple PHP versions with code quality checks
+#
+# @link https://github.com/wanforge
+# @author Sugeng Sulistiyawan
+# @copyright Copyright (c) 2018-2025
+
 name: Tests
 
 on:

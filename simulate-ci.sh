@@ -2,6 +2,10 @@
 
 # Local GitHub Actions Simulation Script
 # This script simulates what will happen in GitHub Actions
+# 
+# @link https://github.com/wanforge
+# @author Sugeng Sulistiyawan
+# @copyright Copyright (c) 2018-2025
 
 echo "🚀 Simulating GitHub Actions workflow locally..."
 echo "================================================"

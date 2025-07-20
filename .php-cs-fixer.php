@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * PHP CS Fixer configuration for Yii2 Toastr
+ * 
+ * @link https://github.com/wanforge
+ * @author Sugeng Sulistiyawan
+ * @copyright Copyright (c) 2018-2025
+ */
+
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/src')
     ->in(__DIR__ . '/tests')

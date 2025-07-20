@@ -9,7 +9,8 @@ use yii\web\YiiAsset;
  * ToastrAsset represents a collection of asset files, such as CSS, JS, images.
  *
  * @link https://github.com/wanforge
- * @copyright Copyright (c) 2025
+ * @author Sugeng Sulistiyawan
+ * @copyright Copyright (c) 2018-2025
  */
 class ToastrAsset extends AssetBundle
 {

@@ -8,7 +8,8 @@ use yii\helpers\Json;
  * Toastr widget
  *
  * @link https://github.com/wanforge
- * @copyright Copyright (c) 2025
+ * @author Sugeng Sulistiyawan
+ * @copyright Copyright (c) 2018-2025
  */
 class Toastr extends ToastrBase
 {
