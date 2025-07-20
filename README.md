@@ -89,7 +89,7 @@ or add to the require section of your `composer.json` file.
 ## Dependencies
 
 - PHP 7.4+
-- [yiisoft/yii2](https://github.com/yiisoft/yii2)
+- [yiisoft/yii2](https://github.com/yiisoft/yii2) (≥2.0.14)
 - [npm-asset/toastr](https://asset-packagist.org/package/npm-asset/toastr)
 
 ## Usage
